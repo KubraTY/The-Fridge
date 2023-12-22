@@ -1,8 +1,17 @@
 import React, { useEffect,useState } from "react";
-import { Link } from "react-router-dom";
+import RecipeCard from "../components/RecipeCard";
 
 const SearchResults = () => {
   const [recipes, setRecipes] = useState([]);
+
+  const handleDelete =(recipeId) => {
+    const updateRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
+    setRecipes(updateRecipes);
+    console.log(updateRecipes)
+  };
+  // add API DELETE
+
+
 
   const fetchRecipes = async() => {
     try { 
@@ -32,10 +41,9 @@ useEffect(() => {
       {recipes.map(recipe => (
        <div>
             <img />
-            <Link key={recipe.id} to={`/recipeDetail/${recipe.id}`}> 
+            <RecipeCard key={recipe.id} id={recipe.id} name={recipe.name} image={recipe.image} remove={handleDelete}/>
             <p className="RecipesTitle"> {recipe.title}</p>
         
-            </Link>
 
        </div>
       ))}
