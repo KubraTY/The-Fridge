@@ -1,7 +1,7 @@
 const Navbar = () => {
     return(
         <>
-        <h1>Header</h1>
+        <h1>this is a new navbar</h1>
         </>
     )
 }
