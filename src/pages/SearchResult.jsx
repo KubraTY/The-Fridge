@@ -1,8 +1,11 @@
 import React, { useEffect,useState } from "react";
 import RecipeCard from "../components/RecipeCard";
+import { SimpleGrid } from '@mantine/core';
+import { useViewportSize } from "@mantine/hooks";
 
 const SearchResults = () => {
   const [recipes, setRecipes] = useState([]);
+  const {width} = useViewportSize()
 
   const handleDelete =(recipeId) => {
     const updateRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
@@ -15,7 +18,7 @@ const SearchResults = () => {
 
   const fetchRecipes = async() => {
     try { 
-        const response = await fetch('https://fakestoreapi.com/products')
+        const response = await fetch(' https://api.escuelajs.co/api/v1/products')
         console.log(response)
         if (response.ok){
          const recipesData = await response.json()
@@ -37,16 +40,14 @@ useEffect(() => {
 
   return (
     <div className="RecipesListPage">
-      <h1>Search Result</h1>
+    <h1>Search Result</h1>
+    
+    <SimpleGrid cols={width < 1200 ? 3 : width < 800 ? 2 : 1}>
       {recipes.map(recipe => (
-       <div>
-            <img />
-            <RecipeCard key={recipe.id} id={recipe.id} name={recipe.name} image={recipe.image} remove={handleDelete}/>
-            <p className="RecipesTitle"> {recipe.title}</p>
-
-       </div>
+        <RecipeCard key={recipe.id} id={recipe.id} title={recipe.title} image={recipe.image} remove={handleDelete} />
       ))}
-    </div>
+    </SimpleGrid>
+  </div>
   );
 };
 
