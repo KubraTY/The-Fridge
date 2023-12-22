@@ -1,5 +1,5 @@
 import React from "react";
-//import classes from "./RecipeCard.module.css"; 
+import classes from "..styles/RecipeCard.module.css"; 
 import { useNavigate } from "react-router-dom";
 
 const RecipeCard = ({ id, title, calories, image, servings, remove }) => {

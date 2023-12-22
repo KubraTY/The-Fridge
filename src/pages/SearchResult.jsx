@@ -43,7 +43,6 @@ useEffect(() => {
             <img />
             <RecipeCard key={recipe.id} id={recipe.id} name={recipe.name} image={recipe.image} remove={handleDelete}/>
             <p className="RecipesTitle"> {recipe.title}</p>
-        
 
        </div>
       ))}
