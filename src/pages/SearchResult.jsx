@@ -1,4 +1,5 @@
 import React, { useEffect,useState } from "react";
+import { Link } from "react-router-dom";
 
 const SearchResults = () => {
   const [recipes, setRecipes] = useState([]);
@@ -9,8 +10,7 @@ const SearchResults = () => {
         console.log(response)
         if (response.ok){
          const recipesData = await response.json()
-         console.log(recipesData)
-         setRecipes(recipesData)
+        setRecipes(recipesData)
     }
     } catch (error) {
         console.log(error)
@@ -22,11 +22,22 @@ useEffect(() => {
     fetchRecipes()
 }, []);
 
+useEffect(() => {
+    console.log(recipes)
+}, [recipes]);
+
   return (
     <div className="RecipesListPage">
       <h1>Search Result</h1>
       {recipes.map(recipe => (
-        <div key={recipe.id}>{recipe.title}</div>
+       <div>
+            <img />
+            <Link key={recipe.id} to={`/recipeDetail/${recipe.id}`}> 
+            <p className="RecipesTitle"> {recipe.title}</p>
+        
+            </Link>
+
+       </div>
       ))}
     </div>
   );
