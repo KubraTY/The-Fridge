@@ -1,0 +1,32 @@
+.navbar {
+    height: 10%;
+    background-color: #f4612d;
+}
+
+.navbar img {
+    height: 60px;
+}
+
+.navbar ul {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftNavbar {
+    padding: 20px;
+}
+
+.rightNavbar {
+    padding: 20px;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+}
+
+.rightNavbar li {
+    padding-left: 50px;
+    padding-right: 80px;
+
+}
