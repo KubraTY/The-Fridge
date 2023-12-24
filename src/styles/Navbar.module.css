@@ -1,6 +1,11 @@
+@import '../App.css';
+
+
 .navbar {
     height: 10%;
-    background-color: #f4612d;
+    background-color: var(--main-orange);
+    padding-inline: 100px;
+    color:white
 }
 
 .navbar img {
@@ -28,5 +33,6 @@
 .rightNavbar li {
     padding-left: 50px;
     padding-right: 80px;
+    text-align: center;
 
 }

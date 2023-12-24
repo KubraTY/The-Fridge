@@ -1,0 +1,76 @@
+@import '../App.css';
+
+.centeredContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    color: var(--label-text-color);
+}
+
+.formTitle{
+    padding-bottom: 20px;
+    font-style: italic;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--background-light-grey);
+    padding: 50px 30px 30px 30px;
+    border-radius: 8px;
+    width: 50vw;
+    max-width: 500px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.keywordsContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filtersContainer {
+    display: flex;
+    width: 100%;
+    margin-top: 15px;
+    padding-bottom: 40px;
+}
+
+.allergies {
+    display: flex;
+    flex-direction: column;
+}
+
+.searchFormSubmit {
+    margin-top: 10px;
+    background-color: var(--main-orange);
+    color: var(--main-background);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 599px) {
+    .formContainer{
+        padding: 20px 10px;
+    }
+    .filtersContainer{
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 15px;
+    }
+}

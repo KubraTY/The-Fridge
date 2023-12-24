@@ -14,6 +14,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <div className="pageContainer">
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/searchResult" element={<SearchResults/>} />
@@ -22,6 +23,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </div>
       <Footer />
     </>
   )

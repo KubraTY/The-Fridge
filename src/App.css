@@ -3,6 +3,19 @@
     --main-background: #ffffff;
     --main-title-color: #252525;
     --text-color: #8e8e8e;
+    --label-text-color: #606060;
     --orange-light: #f4c0b0;
     --background-light-grey: #f6f6f6;
+    --border-white-grey: #dbdbdb;
+}
+
+.pageContainer{
+    margin-inline: 80px;
+}
+
+
+@media (max-width: 599px){
+    .pageContainer{
+        margin-inline: 20px;
+    }
 }
