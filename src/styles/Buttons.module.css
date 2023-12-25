@@ -82,7 +82,7 @@
   width: 100%;
 }
 
-.inputContainer input {
+.inputContainer input, .inputContainer textarea {
   width: 100%;
   border: solid 1px  var(--border-white-grey);
   color: var(--main-title-color);
@@ -105,15 +105,12 @@
 /* dish type selection */
 
 .dishTypeFilter {
-  flex-grow: 1;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .dishTypeFilter label{
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .dishTypeFilter label select{

@@ -5,7 +5,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 90vh;
+    height: 100%;
+    margin-block: 30px;
     color: var(--label-text-color);
 }
 
@@ -36,6 +37,15 @@
     padding-bottom: 20px;
 }
 
+.ingredientsContainer{
+    width: 100%;
+}
+
+.inputContainer{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 .keywordsContainer {
     margin-top: 10px;
     display: flex;
@@ -47,7 +57,6 @@
     justify-content: space-around;
     width: 100%;
     margin-top: 15px;
-    padding-bottom: 40px;
 }
 
 .allergies {
@@ -64,6 +73,16 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+label>span{
+    width: 90px;
+}
+
+.form label{
+    margin-bottom: 15px;
+    align-items: center;
+}
+
 
 @media (max-width: 599px) {
     .formContainer{

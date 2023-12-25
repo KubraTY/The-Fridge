@@ -76,7 +76,7 @@ const SearchForm = () => {
           </div>
           <div className={buttonStyles.dishTypeFilter}>
             <label>
-              Dish Type Filter:
+              Dish Type:
               <select value={dishTypeFilter} onChange={handleDishType}>
                 <option value="">All</option>
                 <option value="starter">Starter</option>
