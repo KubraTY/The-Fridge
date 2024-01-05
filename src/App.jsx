@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import SearchResults from './pages/SearchResult';
+import SearchResults from './components/SearchResult';
 import AllRecipes from './pages/AllRecipes';
 import RecipeDetails from "./pages/RecipeDetails";
 import NewRecipe from "./pages/NewRecipe";
@@ -18,7 +18,6 @@ function App() {
       <div className="pageContainer">
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/searchResult" element={<SearchResults/>} />
         <Route path="/allRecipes" element={<AllRecipes/>} />
         <Route path="/recipeDetail/:recipeId" element={<RecipeDetails />} />
         <Route path="/newRecipe" element={<NewRecipe />} />

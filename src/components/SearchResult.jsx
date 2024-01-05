@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from "react";
-import RecipeCard from "../components/RecipeCard";
+import RecipeCard from "./RecipeCard";
 import { SimpleGrid } from '@mantine/core';
 import { useViewportSize } from "@mantine/hooks";
 import { Link } from "react-router-dom";
@@ -14,7 +14,6 @@ const SearchResults = () => {
     console.log(updateRecipes)
   };
   // add API DELETE
-
 
 
   const fetchRecipes = async() => {
