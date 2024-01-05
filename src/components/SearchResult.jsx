@@ -1,38 +1,20 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect,useState,useContext } from "react";
 import RecipeCard from "./RecipeCard";
 import { SimpleGrid } from '@mantine/core';
 import { useViewportSize } from "@mantine/hooks";
 import { Link } from "react-router-dom";
+import { RecipesContext } from "../components/contexts/RecipesContext";
 
 const SearchResults = () => {
-  const [recipes, setRecipes] = useState([]);
+ // const [recipes, setRecipes] = useState([]);
   const {width} = useViewportSize()
+  const {recipes} = useContext(RecipesContext)
 
   const handleDelete =(recipeId) => {
     const updateRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
     setRecipes(updateRecipes);
     console.log(updateRecipes)
   };
-  // add API DELETE
-
-
-  const fetchRecipes = async() => {
-    try { 
-        const response = await fetch('http://localhost:4000/recipes')
-        console.log(response)
-        if (response.ok){
-         const recipesData = await response.json()
-        setRecipes(recipesData)
-    }
-    } catch (error) {
-        console.log(error)
-    }
-  }
-
-useEffect(() => {
-    console.log('useffect ran')
-    fetchRecipes()
-}, []);
 
 useEffect(() => {
     console.log(recipes)
