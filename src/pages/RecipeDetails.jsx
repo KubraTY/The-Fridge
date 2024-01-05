@@ -1,30 +1,98 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { SimpleGrid } from '@mantine/core';
-import { Image } from '@mantine/core';
+import { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import styles from '../styles/RecipeDetails.module.css';
 
 const RecipeDetails = () => {
-  const [recipe, setRecipe] = useState();
-  const { recipeId } = useParams();
-console.log('Recipe ID:', recipeId);
+    const { recipeId } = useParams()
+    const navigate = useNavigate ()
+    
+    const [recipe, setRecipe] = useState()
 
-  const fetchOneRecipe = async () => {
-    try {
-      const response = await fetch(`https://fakestoreapi.com/products/${recipeId}`)
-      console.log(response)
-      if (response.ok) {
-        const recipeData = await response.json()
-        console.log(recipeData);
-        setRecipe(recipeData);
-      }
-    } catch (error) {
-        console.log(error)
+    const fetchOneRecipe = async () => {
+        try {
+            const response = await fetch(`http://localhost:4000/recipes/${recipeId}`)
+            if (response.ok) {
+              const recipeData = await response.json()
+              setRecipe(recipeData)
+            }
+          } catch (error) {
+            console.log(error)
+            navigate('/allrecipes')
+          }
     }
   }
 
-  useEffect(() => {
-    fetchOneRecipe();
-  }, [recipeId]);
+    useEffect(() => {
+        fetchOneRecipe()
+      }, [recipeId])
+
+    const handleDelete = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/recipes/${recipeId}`, {
+          method: 'DELETE',
+        })
+        if (response.ok) {
+          navigate('/allrecipes')
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    
+    
+    return recipe? (
+      <div className={styles.recipe}>
+      <h1>{recipe.label}</h1>
+      <img src={recipe.image} alt={recipe.label} />
+
+      <div className={styles.labels}>
+        <div className={styles.dietLabels}>
+          <h3>Diet Labels</h3>
+          <ul>
+            {recipe.dietLabels.map((label, index) => (
+              <li key={index}>{label}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.cuisineType}>
+          <h3>Cuisine Type</h3>
+          <p>{recipe.cuisineType.join(', ')}</p>
+        </div>
+
+        <div className={styles.dishType}>
+          <h2>Dish Type</h2>
+          <p>{recipe.dishType.join(', ')}</p>
+        </div>
+      </div>
+
+      <div className={styles.ingredients}>
+        <h2>Ingredients</h2>
+        <ul>
+          {recipe.ingredients.map((ingredient, index) => (
+            <li key={index}>
+              <p>
+                {ingredient.quantity} {ingredient.measure} {ingredient.food}
+              </p>
+              <img src={ingredient.image} alt={ingredient.food} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className={styles.instructions}>
+        <h2>Instructions</h2>
+        <ol>
+          {recipe.instructionLines.map((instruction, index) => (
+            <li key={index}>{instruction}</li>
+          ))}
+        </ol>
+      </div>
+    </div>
+    ) : (
+        <h1>This recipe does not exist</h1>
+      )
+
 
   return recipe ? (
     <div className="RecipePage">
@@ -48,6 +116,6 @@ console.log('Recipe ID:', recipeId);
     <h1>Loading...
     </h1>
   );
-};
+;
 
 export default RecipeDetails;

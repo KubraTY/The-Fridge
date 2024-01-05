@@ -1,0 +1,15 @@
+@import '../App.css';
+
+.footer {
+    background-color: var(--main-orange);
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+
+}
+
+.footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+}

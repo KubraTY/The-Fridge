@@ -1,0 +1,69 @@
+.recipe {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styles */
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #555;
+  }
+  
+  h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #777;
+  }
+  
+  /* Image style */
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Label sections */
+  .labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .dietLabels,
+  .cuisineType,
+  .dishType {
+    width: 30%;
+  }
+  
+  .dietLabels ul,
+  .cuisineType p,
+  .dishType p {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Ingredients and instructions sections */
+  .ingredients,
+  .instructions {
+    margin-bottom: 30px;
+  }
+  
+  .ingredients li,
+  .instructions li {
+    margin-bottom: 10px;
+  }
