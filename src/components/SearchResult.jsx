@@ -18,7 +18,7 @@ const SearchResults = () => {
 
   const fetchRecipes = async() => {
     try { 
-        const response = await fetch(' https://fakestoreapi.com/products')
+        const response = await fetch('http://localhost:4000/recipes')
         console.log(response)
         if (response.ok){
          const recipesData = await response.json()
@@ -45,7 +45,7 @@ useEffect(() => {
     <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
       {recipes.map(recipe => (
        <Link key={recipe.id} to={`/recipeDetail/${recipe.id}`}>
-       <RecipeCard key={recipe.id} id={recipe.id} title={recipe.title} image={recipe.image} remove={handleDelete} />
+       <RecipeCard key={recipe.id} id={recipe.id} label={recipe.label} dietLabels={recipe.dietLabels}  ingredients={recipe.ingredients} remove={handleDelete} />
      </Link>
       ))}
     </SimpleGrid>
