@@ -54,7 +54,6 @@ const RecipeDetails = () => {
       <div className={styles.Mainbox}>
         <h2 className={styles.h2}>Ingredients</h2>
         <ul className={styles.ul}>
-          {console.log(recipe.extendedIngredients)}
           {recipe.extendedIngredients ?
           recipe.extendedIngredients.map(ingredient => {return (
             <li key={ingredient.id}>{ingredient.original}</li>)}) :<p>loading</p> }
@@ -62,18 +61,12 @@ const RecipeDetails = () => {
         <h2 className={styles.h2}>Instructions</h2>
         <div>
           {
-            steps.map((step) => (
-              <div key={step.number}>
-                <p>Step {step.number}: {step.step}</p>
-                <ul>
-                  {step.ingredients.map((ingredient) => (
-                    <li key={ingredient.id}>{ingredient.name}</li>
-                  ))}
-                </ul>
-              </div>
-            ))
+            recipe.analyzedInstructions.steps ?
+            recipe.analyzedInstructions.steps.map((currentStep) => {return (
+            <li key={currentStep.number}>{currentStep.step}</li>)}) : <p>loading</p>
           }
         </div>
+        {console.log(recipe.analyzedInstructions.steps)}
       </div>
       <button type='button' onClick={handleDelete}>
         Delete
