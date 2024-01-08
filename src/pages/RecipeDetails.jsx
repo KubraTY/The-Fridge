@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import styles from '../styles/RecipeDetails.module.css';
 
 const RecipeDetails = () => {
     const { recipeId } = useParams()
     const navigate = useNavigate ()
     
-    const [recipe, setRecipe] = useState()
+    const [recipe, setRecipe] = useState({})
 
     const fetchOneRecipe = async () => {
         try {
@@ -20,7 +20,6 @@ const RecipeDetails = () => {
             navigate('/allrecipes')
           }
     }
-  }
 
     useEffect(() => {
         fetchOneRecipe()
@@ -43,7 +42,7 @@ const RecipeDetails = () => {
     return recipe? (
       <div className={styles.recipe}>
       <h1>{recipe.label}</h1>
-      <img src={recipe.image} alt={recipe.label} />
+      
 
       <div className={styles.labels}>
         <div className={styles.dietLabels}>
@@ -88,34 +87,13 @@ const RecipeDetails = () => {
           ))}
         </ol>
       </div>
+      <button type='button' onClick={handleDelete}>
+        Delete
+      </button>
     </div>
     ) : (
         <h1>This recipe does not exist</h1>
       )
-
-
-  return recipe ? (
-    <div className="RecipePage">
-    <SimpleGrid cols={2}>
-    <div><h1>{recipe.title}</h1>  <p>{recipe.category}</p></div>
-    <div></div>
-    <div> <Image
-      radius="md"
-      h={200}
-      w="auto"
-      fit="contain"
-      src={recipe.image}
-    /></div>
-    <div>{recipe.description}</div>
-   
-  </SimpleGrid>   
-
-
-    </div>
-  ) : (
-    <h1>Loading...
-    </h1>
-  );
-;
+}
 
 export default RecipeDetails;
