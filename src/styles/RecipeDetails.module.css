@@ -35,3 +35,11 @@ display: flex;
 flex-direction: column;
 padding: 20px;
 }
+
+.ol {
+list-style: decimal;
+}
+
+.ul {
+list-style: circle; 
+}

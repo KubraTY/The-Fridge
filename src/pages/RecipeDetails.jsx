@@ -53,9 +53,27 @@ const RecipeDetails = () => {
       </div>
       <div className={styles.Mainbox}>
         <h2 className={styles.h2}>Ingredients</h2>
-          <div>list of ingredients here</div>
+        <ul className={styles.ul}>
+          {console.log(recipe.extendedIngredients)}
+          {recipe.extendedIngredients ?
+          recipe.extendedIngredients.map(ingredient => {return (
+            <li key={ingredient.id}>{ingredient.original}</li>)}) :<p>loading</p> }
+        </ul>
         <h2 className={styles.h2}>Instructions</h2>
-          <div>list of instructions here</div>
+        <div>
+          {
+            steps.map((step) => (
+              <div key={step.number}>
+                <p>Step {step.number}: {step.step}</p>
+                <ul>
+                  {step.ingredients.map((ingredient) => (
+                    <li key={ingredient.id}>{ingredient.name}</li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
       </div>
       <button type='button' onClick={handleDelete}>
         Delete
