@@ -52,16 +52,7 @@ const RecipeCard = ({ id, label, dietLabels, ingredients, remove }) => {
             ))}
         </Text>
 
-        <Button
-          color="#f4612d"
-          fullWidth
-          mt="md"
-          radius="md"
-          className={classes.deleteButton}
-          onClick={handleDelete}
-        >
-          Delete
-        </Button>
+        
       </Card>
     </div>
   );

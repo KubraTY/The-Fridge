@@ -1,25 +1,32 @@
-import { useContext } from "react";
+import React, { useEffect,useState,useContext } from "react";
+import RecipeCard from "../components/RecipeCard";
+import { SimpleGrid } from '@mantine/core';
+import { useViewportSize } from "@mantine/hooks";
+import { Link } from "react-router-dom";
 import { RecipesContext } from "../components/contexts/RecipesContext";
 
 const AllRecipes = () => {
+ // const [recipes, setRecipes] = useState([]);
+  const {width} = useViewportSize()
+  const {recipes} = useContext(RecipesContext)
 
-    const {recipes} = useContext(RecipesContext)
+useEffect(() => {
+    console.log(recipes)
+}, [recipes]);
 
-    return(
-        <>
-            <h1>all Recipes</h1>
-
-            <ul>
-                {
-                    recipes.map(recipe => (
-                        <li key={recipe.id}>{recipe.label}
-                        <img src={recipe.image} alt="" />
-                        </li>
-                    ))
-                }
-            </ul>
-        </>
-    )
-}
+  return (
+    <div className="RecipesListPage">
+    <h1>All Recipes</h1>
+    
+    <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
+      {recipes.map(recipe => (
+       <Link key={recipe.id} to={`/recipeDetail/${recipe.id}`}>
+       <RecipeCard key={recipe.id} id={recipe.id} label={recipe.label} dietLabels={recipe.dietLabels}  ingredients={recipe.ingredients} />
+     </Link>
+      ))}
+    </SimpleGrid>
+  </div>
+  );
+};
 
 export default AllRecipes;
