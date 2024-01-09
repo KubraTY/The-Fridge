@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { RecipesContext } from "../components/contexts/RecipesContext";
 
 const SearchResults = () => {
- // const [recipes, setRecipes] = useState([]);
+ // const [recipes, setRecips] = useState([]);
   const {width} = useViewportSize()
   const {recipes} = useContext(RecipesContext)
 
