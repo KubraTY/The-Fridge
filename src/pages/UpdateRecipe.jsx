@@ -1,18 +1,52 @@
-import { useEffect, useContext} from 'react'
+import { useEffect, useContext, useState} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { RecipesContext } from "../components/contexts/RecipesContext";
+import styles from '../styles/UpdateRecipe.module.css';
+import buttonStyles from '../styles/Buttons.module.css';
 
 const UpdateRecipe = () => {
-    const {recipe,fetchOneRecipe } = useContext(RecipesContext);
-    const { recipeId } = useParams() ;
-    
-
-
-useEffect(() => {
+    useEffect(() => {
         fetchOneRecipe(recipeId)
       }, [])
 
-/*const handleSubmit = async event => {
+    const {recipe,fetchOneRecipe } = useContext(RecipesContext);
+    const { recipeId } = useParams() ;
+    
+    const [title, setTitle] = useState(recipe.title);
+    const [vegetarian, setVegetarian] = useState(recipe.vegetarian);
+    const [vegan, setVegan] = useState(recipe.vegan);
+    const [glutenFree, setGlutenFree] = useState(recipe.glutenFree);
+    const [dairyFree, setDairyFree] = useState(recipe.dairyFree);
+    const [extendedIngredients, setExtendedIngredients] = useState(recipe.extendedIngredients);
+    const [image, setImage] = useState(recipe.image);
+    const [readyInMinutes, setReadyInMinutes] = useState(recipe.readyInMinutes);
+    const [servings, setServings] = useState(recipe.servings);
+    const [dishTypes, setDishTypes] = useState(recipe.dishTypes);
+    const [diets, setDiets] = useState(recipe.diets);
+    const [instructions, setInstructions] = useState(recipe.instructions);
+
+const navigate = useNavigate() ;
+
+const handleIngredientSubmit = (e) => {
+    e.preventDefault();
+
+    if (!e.target.form.elements.ingredients.value) {
+      alert('Please enter an ingredient.');
+      return;
+    }
+
+    const newIngredient = {
+      original: e.target.form.elements.ingredients.value,
+    };
+
+    setExtendedIngredients([...extendedIngredients, newIngredient]);
+
+    e.target.form.elements.ingredients.value = '';
+
+    console.log('Ingredient added');
+  };
+
+const handleSubmit = async event => {
     event.preventDefault()
     const payload = { title, description }
 
@@ -30,28 +64,176 @@ useEffect(() => {
     } catch (error) {
       console.error(error)
     }
-  } */ 
-  return (<p>{recipe.title}</p>)
-  /* return (
-    <>
-      <h1>Update {recipe.title}</h1>
+  } 
+  
+  return (
+    <div className={styles.centeredContainer}>
+    <h1 className={styles.h1}>Update the recipe <span className={styles.recipeTitle}>{recipe.title}</span></h1>
+    <div className={styles.formContainer}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+
+        <label className={buttonStyles.inputContainer}>
+          <span>Title:</span>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </label>
+
+        <label className={buttonStyles.inputContainer}>
+          <span>Image:</span>
+          <input
+            type="text"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+        </label>
+
+            
+         <div className={styles.ingredientsContainer}>
+           {/* <div className={buttonStyles.inputContainer}>
+            <input
+              type="text"
+              name="ingredients"
+              placeholder="Ingredient..."
+            />
+            <button
+              className={buttonStyles.button_1}
+              type="button"
+              onClick={(e) => handleIngredientSubmit(e)}
+            >
+              Add
+            </button>
+          </div>
+           <div className={styles.keywordsContainer}>
+            {extendedIngredients.map((ingredient, index) => (
+              <div key={index} className={buttonStyles.keyword}>
+                {ingredient.original} <button onClick={() => handleDeleteIngredient(index)}>X</button>
+              </div>
+         ))}  
+        </div>   */}
+
+          <div className={styles.containerForTwo} >
+            <label className={buttonStyles.inputContainer}>
+              <span>Ready In:</span>
+              <input
+                type="number"
+                value={readyInMinutes}
+                onChange={(e) => setReadyInMinutes(e.target.value)}
+              />
+            </label>
+
+            <label className={buttonStyles.inputContainer}>
+              <span>Servings:</span>
+              <input
+                type="number"
+                value={servings}
+                onChange={(e) => setServings(e.target.value)}
+              />
+            </label>
+          </div>
+
+
+        </div>
+
+        <div className={styles.filtersContainer}>
+
+          <div className={styles.dietFilter}>
+            <label>
+              <span>Diets:</span>
+              <div>
+                <label className={buttonStyles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    value="vegan"
+                    checked={vegan}
+                    /* onChange={setVegan(!recipe.vegan)} */
+                  />
+                  Vegan
+                </label>
+              </div>
+              <div>
+                <label className={buttonStyles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    value="vegetarian"
+                    checked={vegetarian}
+                    /* onChange={setVegetarian(!recipe.vegetarian)} */
+                  />
+                  Vegetarian
+                </label>
+              </div>
+              <div>
+                <label className={buttonStyles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    value="glutenFree"
+                    checked={glutenFree}
+                    /* onChange={setGlutenFree(!recipe.glutenFree)} */
+                  />
+                  Gluten Free
+                </label>
+              </div>
+              <div>
+                <label className={buttonStyles.checkboxLabel}>
+                  <input
+                    type="checkbox"
+                    value="dairyFree"
+                    checked={dairyFree}
+                   /*  onChange={setDiets(!recipe.dairyFree)} */
+                  />
+                  Dairy Free
+                </label>
+              </div>
+            </label>
+          </div> 
+
+           {/*<div className={buttonStyles.dishTypeFilter}>
+            <label>
+              <span>Dish Type:</span>
+              <select value={recipe.dishTypes} onChange={(e) => handleDishTypeChange(e)}>
+                <option value="">All</option>
+                <option value="starter">Starter</option>
+                <option value="soup">Soup</option>
+                <option value="main">Main Course</option>
+                <option value="dessert">Dessert</option>
+              </select>
+            </label>
+          </div>*/}
+
+        </div>
+
+        <label className={buttonStyles.inputContainer}>
+          <span>Instructions:</span>
+          <textarea value={instructions} onChange={(e) => setInstructions(e.target.value)} />
+        </label>
+
+        <button className={buttonStyles.button_1} type="submit">
+          Edit Recipe
+        </button>
+      </form>
+    </div>
+  </div>
+    /*<>
+      <h1 className={styles.h1}>Update the recipe <span className={styles.recipeTitle}>{recipe.title}</span></h1>
       <form onSubmit={handleSubmit}>
         <label>
           Title :
-          <input value={title} onChange={event => setTitle(event.target.value)} required />
+          <input value={recipe.title} onChange={event => setTitle(event.target.value)} required />
         </label>
         <label>
-          Description :
+          Image URL :
           <input
-            value={description}
-            onChange={event => setDescription(event.target.value)}
+            value={recipe.image}
+            onChange={event => setImage(event.target.value)}
             required
           />
         </label>
         <button type='submit'>Update</button>
       </form>
-    </>
-  )*/
+  </>*/
+  )
 }
 
 export default UpdateRecipe
