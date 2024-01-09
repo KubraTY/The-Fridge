@@ -13,6 +13,7 @@
     "@mantine/core": "^7.4.0",
     "@mantine/hooks": "^7.3.2",
     "axios": "^1.6.5",
+    "html-react-parser": "^5.0.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1"
