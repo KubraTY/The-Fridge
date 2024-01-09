@@ -26,9 +26,16 @@ useEffect(() => {
     
     <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
       {recipes.map(recipe => (
-       <Link key={recipe.id} to={`/recipeDetail/${recipe.id}`}>
-       <RecipeCard key={recipe.id} id={recipe.id} image={recipe.image} title={recipe.title} dietLabels={recipe.diets}  ingredients={recipe.ingredients} />
-     </Link>
+      <Link key={recipe.id} to={`/recipeDetail/${recipe.id}`}>
+      <RecipeCard
+        key={recipe.id}
+        id={recipe.id}
+        image={recipe.image}
+        cuisines={recipe.cuisines} 
+        title={recipe.title}
+        summary={recipe.summary}
+      />
+    </Link>
       ))}
     </SimpleGrid>
   </div>
