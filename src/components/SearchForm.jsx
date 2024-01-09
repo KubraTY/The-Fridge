@@ -1,25 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from '../styles/SearchForm.module.css';
-import buttonStyles from '../styles/Buttons.module.css'
+import buttonStyles from '../styles/Buttons.module.css';
+import { RecipesContext } from '../components/contexts/RecipesContext';
 
 const SearchForm = () => {
   const [keywords, setKeywords] = useState([]);
   const [dishTypeFilter, setDishTypeFilter] = useState('');
-  const [allergies, setAllergies] = useState({
-    Gluten: false,
-    Soya: false,
-    Lactose: false,
-    Peanut: false,
-    Shellfish: false,
+  const [diets, setDiets] = useState({
+    vegan: false,
+    vegetarian: false,
+    glutenFree: false,
+    dairyFree: false,
   });
 
+  const { updateFilteredRecipes } = useContext(RecipesContext);
+
   const handleSearch = (e) => {
-    console.log("submit the form");
     e.preventDefault();
-    console.log('Search Clicked');
-    console.log('Keywords:', keywords);
-    console.log('Dish Type Filter:', dishTypeFilter);
-    console.log('Allergies:', allergies);
+
+    // Build search criteria object
+    const searchCriteria = {
+      keywords,
+      dishType: dishTypeFilter,
+      diets: Object.keys(diets).filter((diet) => diets[diet]),
+    };
+
+    // Call the context function to update filtered recipes
+    updateFilteredRecipes(searchCriteria);
   };
 
   const handleKeywordSubmit = (e) => {
@@ -38,39 +45,40 @@ const SearchForm = () => {
     setDishTypeFilter(e.target.value);
   };
 
-  const handleAllergies = (allergy) => {
-    setAllergies((prevAllergies) => ({ ...prevAllergies, [allergy]: !prevAllergies[allergy] }));
+  const handleDiets = (diet) => {
+    setDiets((prevDiets) => ({ ...prevDiets, [diet]: !prevDiets[diet] }));
   };
 
   return (
     <div className={styles.centeredContainer}>
-        <h1 className={styles.formTitle}>"From Fridge to Feast: Your Culinary Journey Begins Here"</h1>
+      <h1 className={styles.formTitle}>"From Fridge to Feast: Your Culinary Journey Begins Here"</h1>
       <div className={styles.formContainer}>
-      <form onSubmit={handleKeywordSubmit} className={styles.form}>
+        <form onSubmit={handleKeywordSubmit} className={styles.form}>
           <div className={buttonStyles.inputContainer}>
-            <input type="text" name="keyword" placeholder='ingredients...' />
-            <button className={buttonStyles.button_1} type="submit">Add</button>
+            <input type="text" name="keyword" placeholder="ingredients..." />
+            <button className={buttonStyles.button_1} type="submit">
+              Add
+            </button>
           </div>
           <div className={styles.keywordsContainer}>
-          {keywords.map((keyword, index) => (
-            <div key={index} className={buttonStyles.keyword}>
-              {keyword}{' '}
-              <button onClick={() => handleDeleteKeyword(index)}>X</button>
-            </div>
-          ))}
-        </div>
+            {keywords.map((keyword, index) => (
+              <div key={index} className={buttonStyles.keyword}>
+                {keyword} <button onClick={() => handleDeleteKeyword(index)}>X</button>
+              </div>
+            ))}
+          </div>
         </form>
-      <div className={styles.filtersContainer}>
-          <div className={styles.allergies}>
-            Allergies:
-            {Object.keys(allergies).map((allergy) => (
-              <label key={allergy} className={buttonStyles.checkboxLabel}>
+        <div className={styles.filtersContainer}>
+          <div className={styles.diets}>
+            Diet:
+            {Object.keys(diets).map((diet) => (
+              <label key={diet} className={buttonStyles.checkboxLabel}>
                 <input
                   type="checkbox"
-                  checked={allergies[allergy]}
-                  onChange={() => handleAllergies(allergy)}
+                  checked={diets[diet]}
+                  onChange={() => handleDiets(diet)}
                 />
-                {allergy}
+                {diet}
               </label>
             ))}
           </div>

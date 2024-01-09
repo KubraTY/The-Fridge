@@ -7,6 +7,7 @@ const Home = () => {
             <SearchForm />
             <SearchResults/>
         </>
+        
     )
 }
 

@@ -5,7 +5,9 @@ export const RecipesContext = createContext();
 
 const RecipesContextProvider = ({children}) => {
     const [recipes, setRecipes] = useState([]);
-    const [recipe, setRecipe] = useState ({})
+    const [recipe, setRecipe] = useState ({});
+    const [filteredRecipes, setFilteredRecipes] = useState([]);
+
     const fetchRecipes = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_BASE_API_URL}/recipes`);
@@ -13,6 +15,9 @@ const RecipesContextProvider = ({children}) => {
             if (response.status === 200) {
                 const recipesData = response.data;
                 setRecipes(recipesData);
+                if (!filteredRecipes.length) {
+                  setFilteredRecipes(recipesData);
+                }
                 console.log(recipesData);
             }
         } catch (error) {
@@ -49,6 +54,26 @@ const RecipesContextProvider = ({children}) => {
         }
       };
 
+      const updateFilteredRecipes = (searchCriteria) => {
+        // Implement your filtering logic here
+        const filtered = recipes.filter((recipe) => {
+          // Filtering based on keywords
+          const hasKeywords = searchCriteria.keywords.every((keyword) =>
+            recipe.title.toLowerCase().includes(keyword.toLowerCase())
+          );
+    
+          // Filtering based on dishType
+          const hasDishType = !searchCriteria.dishType || recipe.dishTypes.includes(searchCriteria.dishType);
+    
+          // Filtering based on diets
+          const hasDiets = searchCriteria.diets.every((diet) => recipe.diets.includes(diet));
+    
+          return hasKeywords && hasDishType && hasDiets;
+        });
+    
+        setFilteredRecipes(filtered);
+      };
+
     useEffect(() => {
       fetchRecipes()
     }, [])
@@ -56,7 +81,7 @@ const RecipesContextProvider = ({children}) => {
 
     return(
       
-      <RecipesContext.Provider value={{fetchRecipes, recipes, addRecipe, recipe, fetchOneRecipe}}>
+      <RecipesContext.Provider value={{fetchRecipes, recipes, addRecipe, recipe, fetchOneRecipe,filteredRecipes, updateFilteredRecipes}}>
         {children}
       </RecipesContext.Provider>
     )

@@ -7,19 +7,21 @@ import { RecipesContext } from "../components/contexts/RecipesContext";
 
 const SearchResults = () => {
  // const [recipes, setRecips] = useState([]);
-  const {width} = useViewportSize()
+  const {width } = useViewportSize()
+  const { filteredRecipes } = useContext(RecipesContext);
   const {recipes} = useContext(RecipesContext)
 
-useEffect(() => {
-    console.log(recipes)
-}, [recipes]);
+
+  useEffect(() => {
+    console.log(filteredRecipes);
+  }, [filteredRecipes]);
 
   return (
     <div className="RecipesListPage">
     <h1>Search Result</h1>
     
     <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
-      {recipes.map(recipe => (
+      {filteredRecipes.map(recipe => (
       <Link key={recipe.id} to={`/recipeDetail/${recipe.id}`}>
       <RecipeCard
         key={recipe.id}
@@ -34,6 +36,7 @@ useEffect(() => {
     </SimpleGrid>
   </div>
   );
+  
 };
 
 export default SearchResults;
