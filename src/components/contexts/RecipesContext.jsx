@@ -13,7 +13,7 @@ const RecipesContextProvider = ({children}) => {
             if (response.status === 200) {
                 const recipesData = response.data;
                 setRecipes(recipesData);
-                console.log(recipesData);
+                //console.log(recipesData);
             }
         } catch (error) {
             console.error(error);

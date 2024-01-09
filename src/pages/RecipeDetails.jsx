@@ -31,6 +31,7 @@ const RecipeDetails = () => {
           method: 'DELETE',
         })
         if (response.ok) {
+          /* here we need to add some instructions to delete the card from the AllRecipes page as well */
           navigate('/allrecipes')
         }
       } catch (error) {
@@ -38,8 +39,41 @@ const RecipeDetails = () => {
       }
     }
     
-    
-    return recipe? (
+  
+  return (
+    <>
+      <div className={styles.Headerbox}>
+        <div className={styles.HeaderboxLeft}>
+          <img src={recipe.image} alt={recipe.title} />
+        </div>
+        <div className={styles.HeaderboxRight}>
+          <h1 className={styles.h1}>{recipe.title}</h1>
+          <div>General Information</div>
+        </div>
+      </div>
+      <div className={styles.Mainbox}>
+        <h2 className={styles.h2}>Ingredients</h2>
+        <ul className={styles.ul}>
+          {recipe.extendedIngredients ?
+          recipe.extendedIngredients.map(ingredient => {return (
+            <li key={ingredient.id}>{ingredient.original}</li>)}) :<p>loading</p> }
+        </ul>
+        <h2 className={styles.h2}>Instructions</h2>
+        <div>
+          {
+            recipe.analyzedInstructions.steps ?
+            recipe.analyzedInstructions.steps.map((currentStep) => {return (
+            <li key={currentStep.number}>{currentStep.step}</li>)}) : <p>loading</p>
+          }
+        </div>
+        {console.log(recipe.analyzedInstructions.steps)}
+      </div>
+      <button type='button' onClick={handleDelete}>
+        Delete
+      </button>
+    </>
+  )
+  /* return recipe? (
       <div className={styles.recipe}>
       <h1>{recipe.label}</h1>
       
@@ -93,7 +127,7 @@ const RecipeDetails = () => {
     </div>
     ) : (
         <h1>This recipe does not exist</h1>
-      )
+      ) */
 }
 
 export default RecipeDetails;

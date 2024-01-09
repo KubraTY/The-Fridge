@@ -19,23 +19,14 @@ const AllRecipes = () => {
       <h1>All Recipes</h1>
 
 
-      {/* <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
+       <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
       {recipes.map(recipe => (
        <Link key={recipe.id} to={`/recipeDetail/${recipe.id}`}>
-       <RecipeCard key={recipe.id} id={recipe.id} title={recipe.title} dietLabels={recipe.dietLabels}  ingredients={recipe.ingredients} />
+       <RecipeCard key={recipe.id} id={recipe.id} image={recipe.image} title={recipe.title} dietLabels={recipe.diets}  ingredients={recipe.ingredients} />
      </Link>
       ))}
-    </SimpleGrid>*/}
-      <ul>
-        {recipes.map(recipe => (
-          <li><span>
-            {recipe.title}
-          </span> <img src={recipe.image} alt={recipe.title} />
-          </li>
-        ))
+    </SimpleGrid>
 
-        }
-      </ul>
     </div>
   );
 };
