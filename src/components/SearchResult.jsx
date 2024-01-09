@@ -9,12 +9,38 @@ const SearchResults = () => {
  // const [recipes, setRecipes] = useState([]);
   const {width} = useViewportSize()
   const {recipes} = useContext(RecipesContext)
+  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
+  const applyFilters = ({ keywords, dishTypeFilter, allergies }) => {
+    let filteredResults = [...recipes];
 
-  const handleDelete =(recipeId) => {
-    const updateRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
-    setRecipes(updateRecipes);
-    console.log(updateRecipes)
+    // Filter by keywords
+    if (keywords.length > 0) {
+      filteredResults = filteredResults.filter(recipe =>
+        keywords.every(keyword =>
+          recipe.title.toLowerCase().includes(keyword.toLowerCase())
+        )
+      );
+    }
+
+    // Filter by dish type
+    if (dishTypeFilter) {
+      filteredResults = filteredResults.filter(
+        recipe => recipe.dishType === dishTypeFilter
+      );
+    }
+
+    // Filter by allergies
+    if (Object.values(allergies).some(allergy => allergy === true)) {
+      filteredResults = filteredResults.filter(recipe =>
+        Object.keys(allergies).every(
+          allergy => !allergies[allergy] || !recipe.allergies.includes(allergy)
+        )
+      );
+    }
+
+    setFilteredRecipes(filteredResults);
   };
+  
 
 useEffect(() => {
     console.log(recipes)
