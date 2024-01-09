@@ -23,8 +23,8 @@ function App() {
         <Route path="/recipeDetail/:recipeId" element={<RecipeDetails />} />
         <Route path="/newRecipe" element={<NewRecipe />} />
         <Route path="/about" element={<About />} />
+        <Route path="/recipeDetail/:recipeId/update" element={<UpdateRecipe />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/recipeDetail/:recipeId/udpate" element={<UpdateRecipe />} />
       </Routes>
       </div>
       <Footer />

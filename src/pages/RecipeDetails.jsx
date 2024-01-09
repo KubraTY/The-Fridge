@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams,useNavigate } from 'react-router-dom'
 import styles from '../styles/RecipeDetails.module.css';
 import parse from 'html-react-parser';
 import buttonStyles from '../styles/Buttons.module.css';
@@ -8,6 +8,7 @@ import { RecipesContext } from "../components/contexts/RecipesContext";
 const RecipeDetails = () => {
     const {recipe,fetchOneRecipe } = useContext(RecipesContext);
     const { recipeId } = useParams() ;
+    const navigate = useNavigate()
     
    
     useEffect(() => {
@@ -18,7 +19,7 @@ const RecipeDetails = () => {
     
     const handleDelete = async () => {
         try {
-          const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/${recipeId}`, {
+          const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/recipes/${recipeId}`, {
             method: 'DELETE',
           })
           if (response.ok) {

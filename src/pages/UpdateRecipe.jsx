@@ -1,10 +1,11 @@
-import { useEffect} from 'react'
+import { useEffect, useContext} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { RecipesContext } from "../components/contexts/RecipesContext";
 
 const UpdateRecipe = () => {
     const {recipe,fetchOneRecipe } = useContext(RecipesContext);
     const { recipeId } = useParams() ;
-    const navigate = useNavigate()
+    
 
 
 useEffect(() => {
@@ -30,7 +31,7 @@ useEffect(() => {
       console.error(error)
     }
   } */ 
-  return (<p>coucou</p>)
+  return (<p>{recipe.title}</p>)
   /* return (
     <>
       <h1>Update {recipe.title}</h1>
