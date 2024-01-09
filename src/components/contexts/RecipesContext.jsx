@@ -42,7 +42,7 @@ const RecipesContextProvider = ({children}) => {
 
             const addedRecipe = response.data;
             setRecipes((prevRecipes) => [...prevRecipes, addedRecipe]);
-            console.log(recipes)
+            console.log(addedRecipe, "recipe added")
           }
         } catch (error) {
           console.error(error);

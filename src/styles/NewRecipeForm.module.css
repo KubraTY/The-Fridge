@@ -40,6 +40,14 @@
 .ingredientsContainer{
     width: 100%;
 }
+.containerForTwo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    gap:8px;
+
+}
 
 .inputContainer{
     width: 100%;
@@ -92,5 +100,8 @@ label>span{
         flex-direction: column-reverse;
         align-items: center;
         gap: 15px;
+    }
+    .containerForTwo{
+        flex-direction: column;
     }
 }

@@ -58,6 +58,19 @@ const NewRecipe = () => {
   const handleDietChange = (e) => {
     const { value, checked } = e.target;
 
+    if (value === "glutenFree" && checked) {
+      setGlutenFree(true);
+    }
+    if (value === "vegan" && checked) {
+      setVegan(true);
+    }
+    if (value === "vegetarian" && checked) {
+      setVegetarian(true);
+    }
+    if (value === "dairyFree" && checked) {
+      setDairyFree(true);
+    }
+
     setDiets((prevDiets) => {
       if (checked) {
         return [...prevDiets, value];
@@ -142,13 +155,13 @@ const NewRecipe = () => {
               ))}
             </div>
 
-            <div>
+            <div className={styles.containerForTwo} >
               <label className={buttonStyles.inputContainer}>
-                <span>Ready In Minutes:</span>
+                <span>Ready In:</span>
                 <input
                   type="number"
                   value={readyInMinutes}
-                  placeholder="Ready in minutes..."
+                  placeholder="Minutes..."
                   onChange={(e) => setReadyInMinutes(e.target.value)}
                 />
               </label>
@@ -158,7 +171,7 @@ const NewRecipe = () => {
                 <input
                   type="number"
                   value={servings}
-                  placeholder="Number of servings..."
+                  placeholder="Number of people"
                   onChange={(e) => setServings(e.target.value)}
                 />
               </label>

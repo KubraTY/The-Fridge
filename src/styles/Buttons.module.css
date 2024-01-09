@@ -8,6 +8,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 5px;
 }
 
 .button_1:hover {
@@ -78,7 +79,6 @@
 .inputContainer {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
   width: 100%;
 }
 
