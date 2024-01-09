@@ -2,6 +2,8 @@
   color:#f4612d;
   font-size: 40px;
   font-weight: 600;
+  text-align: center;
+  padding: 20px;
 }
 
 .h2 {
@@ -42,4 +44,12 @@ list-style: decimal;
 
 .ul {
 list-style: circle; 
+}
+
+.EditBox{
+padding: 20px;
+display: flex;
+flex-direction: row;
+justify-content: center;
+gap: 20px;
 }
