@@ -1,36 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const UpdateRecipePage = () => {
-  const { recipeId } = useParams()
-  const navigate = useNavigate()
-  
-  const [recipe, setRecipe] = useState({})
+const UpdateRecipe = () => {
+    const {recipe,fetchOneRecipe } = useContext(RecipesContext);
+    const { recipeId } = useParams() ;
+    const navigate = useNavigate()
 
 
-  const fetchOneRecipe = async () => {
-    try {
-        const response = await fetch(`http://localhost:4000/recipes/${recipeId}`)
-        if (response.ok) {
-          const recipeData = await response.json()
-          setRecipe(recipeData)
-        }
-      } catch (error) {
-        console.log(error)
-        navigate('/allrecipes')
-      }
-}
+useEffect(() => {
+        fetchOneRecipe(recipeId)
+      }, [])
 
-  useEffect(() => {
-    fetchOneRecipe()
-  }, [])
-
-  const handleSubmit = async event => {
+/*const handleSubmit = async event => {
     event.preventDefault()
     const payload = { title, description }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/projects/${projectId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/recipes/${recipeId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -38,14 +24,14 @@ const UpdateRecipePage = () => {
         body: JSON.stringify(payload),
       })
       if (response.ok) {
-        navigate(`/projects/${projectId}`)
+        navigate(`/recipeDetail/${recipeId}`)
       }
     } catch (error) {
       console.error(error)
     }
-  }
-
-  return (
+  } */ 
+  return (<p>coucou</p>)
+  /* return (
     <>
       <h1>Update {recipe.title}</h1>
       <form onSubmit={handleSubmit}>
@@ -64,7 +50,7 @@ const UpdateRecipePage = () => {
         <button type='submit'>Update</button>
       </form>
     </>
-  )
+  )*/
 }
 
-export default UpdateProjectPage
+export default UpdateRecipe

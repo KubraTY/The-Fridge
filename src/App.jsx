@@ -7,6 +7,7 @@ import RecipeDetails from "./pages/RecipeDetails";
 import NewRecipe from "./pages/NewRecipe";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import UpdateRecipe from './pages/UpdateRecipe';
 import { Route, Routes } from 'react-router-dom';
 import './App.css'
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/newRecipe" element={<NewRecipe />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/recipeDetail/:recipeId/udpate" element={<UpdateRecipe />} />
       </Routes>
       </div>
       <Footer />
