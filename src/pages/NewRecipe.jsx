@@ -2,65 +2,95 @@ import React, { useState, useContext } from 'react';
 import buttonStyles from '../styles/Buttons.module.css';
 import styles from '../styles/NewRecipeForm.module.css';
 import { useNavigate } from 'react-router-dom';
-import { RecipesContext } from "../components/contexts/RecipesContext";
-
+import { RecipesContext } from '../components/contexts/RecipesContext';
 
 const NewRecipe = () => {
+  const { addRecipe, fetchRecipes } = useContext(RecipesContext);
 
-  const {addRecipe ,fetchRecipes} = useContext(RecipesContext)
 
-  const [label, setLabel] = useState('');
-  const [ingredients, setIngredients] = useState([]);
+  const [title, setTitle] = useState('');
+  const [vegetarian, setVegetarian] = useState(false);
+  const [vegan, setVegan] = useState(false);
+  const [glutenFree, setGlutenFree] = useState(false);
+  const [dairyFree, setDairyFree] = useState(false);
+  const [extendedIngredients, setExtendedIngredients] = useState([]);
   const [image, setImage] = useState('');
-  const [dishType, setDishType] = useState('');
-  const [summary, setSummary] = useState('');
-  const [allergies, setAllergies] = useState({
-    Gluten: false,
-    Soya: false,
-    Lactose: false,
-    Peanut: false,
-    Shellfish: false,
-  });
+  const [readyInMinutes, setReadyInMinutes] = useState('');
+  const [servings, setServings] = useState('');
+  const [dishTypes, setDishTypes] = useState([]);
+  const [diets, setDiets] = useState([]);
+  const [instructions, setInstructions] = useState('');
 
-  const [ingredientInput, setIngredientInput] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleIngredientSubmit = (e) => {
     e.preventDefault();
-    setIngredients([...ingredients, e.target.form.elements.ingredients.value]);
+
+    if (!e.target.form.elements.ingredients.value) {
+      alert('Please enter an ingredient.');
+      return;
+    }
+
+    const newIngredient = {
+      original: e.target.form.elements.ingredients.value,
+    };
+
+    setExtendedIngredients([...extendedIngredients, newIngredient]);
+
     e.target.form.elements.ingredients.value = '';
+
     console.log('Ingredient added');
   };
 
   const handleDeleteIngredient = (index) => {
-    setIngredients((prevIngredients) => {
+    setExtendedIngredients((prevIngredients) => {
       const updatedIngredients = [...prevIngredients];
       updatedIngredients.splice(index, 1);
       return updatedIngredients;
     });
   };
 
-  const handleAllergies = (allergy) => {
-    setAllergies((prevAllergies) => ({ ...prevAllergies, [allergy]: !prevAllergies[allergy] }));
+  const handleDishTypeChange = (e) => {
+    const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+    setDishTypes(selectedOptions);
   };
+
+  const handleDietChange = (e) => {
+    const { value, checked } = e.target;
+
+    setDiets((prevDiets) => {
+      if (checked) {
+        return [...prevDiets, value];
+      } else {
+        return prevDiets.filter((diet) => diet !== value);
+      }
+    });
+  };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newRecipeData = {
-      label,
-      ingredients,
+      title,
+      vegetarian,
+      vegan,
+      glutenFree,
+      dairyFree,
+      extendedIngredients,
+      readyInMinutes,
+      servings,
       image,
-      dishType,
-      summary,
-      allergies,
+      dishTypes,
+      diets,
+      instructions,
     };
 
     addRecipe(newRecipeData);
+    fetchRecipes();
 
     navigate('/allrecipes');
-    fetchRecipes()
-
   };
 
   return (
@@ -68,13 +98,14 @@ const NewRecipe = () => {
       <h1 className={styles.formTitle}>Flavors Unleashed: Create Your Signature Dish</h1>
       <div className={styles.formContainer}>
         <form onSubmit={handleSubmit} className={styles.form}>
+
           <label className={buttonStyles.inputContainer}>
             <span>Title:</span>
             <input
               type="text"
-              value={label}
+              value={title}
               placeholder="Your recipe name..."
-              onChange={(e) => setLabel(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </label>
 
@@ -90,7 +121,11 @@ const NewRecipe = () => {
 
           <div className={styles.ingredientsContainer}>
             <div className={buttonStyles.inputContainer}>
-              <input type="text" name="ingredients" placeholder="Ingredients..." />
+              <input
+                type="text"
+                name="ingredients"
+                placeholder="Ingredient..."
+              />
               <button
                 className={buttonStyles.button_1}
                 type="button"
@@ -100,34 +135,94 @@ const NewRecipe = () => {
               </button>
             </div>
             <div className={styles.keywordsContainer}>
-              {ingredients.map((ingredient, index) => (
+              {extendedIngredients.map((ingredient, index) => (
                 <div key={index} className={buttonStyles.keyword}>
-                  {ingredient} <button onClick={() => handleDeleteIngredient(index)}>X</button>
+                  {ingredient.original} <button onClick={() => handleDeleteIngredient(index)}>X</button>
                 </div>
               ))}
             </div>
+
+            <div>
+              <label className={buttonStyles.inputContainer}>
+                <span>Ready In Minutes:</span>
+                <input
+                  type="number"
+                  value={readyInMinutes}
+                  placeholder="Ready in minutes..."
+                  onChange={(e) => setReadyInMinutes(e.target.value)}
+                />
+              </label>
+
+              <label className={buttonStyles.inputContainer}>
+                <span>Servings:</span>
+                <input
+                  type="number"
+                  value={servings}
+                  placeholder="Number of servings..."
+                  onChange={(e) => setServings(e.target.value)}
+                />
+              </label>
+            </div>
+
+
           </div>
 
           <div className={styles.filtersContainer}>
-            <div className={styles.allergies}>
+
+            <div className={styles.dietFilter}>
               <label>
-                <span>Allergies:</span>
-                {Object.keys(allergies).map((allergy) => (
-                  <label key={allergy} className={buttonStyles.checkboxLabel}>
+                <span>Diets:</span>
+                <div>
+                  <label className={buttonStyles.checkboxLabel}>
                     <input
                       type="checkbox"
-                      checked={allergies[allergy]}
-                      onChange={() => handleAllergies(allergy)}
+                      value="vegan"
+                      checked={diets.includes("vegan")}
+                      onChange={handleDietChange}
                     />
-                    {allergy}
+                    Vegan
                   </label>
-                ))}
+                </div>
+                <div>
+                  <label className={buttonStyles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      value="vegetarian"
+                      checked={diets.includes("vegetarian")}
+                      onChange={handleDietChange}
+                    />
+                    Vegetarian
+                  </label>
+                </div>
+                <div>
+                  <label className={buttonStyles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      value="glutenFree"
+                      checked={diets.includes("glutenFree")}
+                      onChange={handleDietChange}
+                    />
+                    Gluten Free
+                  </label>
+                </div>
+                <div>
+                  <label className={buttonStyles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      value="dairyFree"
+                      checked={diets.includes("dairyFree")}
+                      onChange={handleDietChange}
+                    />
+                    Dairy Free
+                  </label>
+                </div>
               </label>
             </div>
+
             <div className={buttonStyles.dishTypeFilter}>
               <label>
                 <span>Dish Type:</span>
-                <select value={dishType} onChange={(e) => setDishType(e.target.value)}>
+                <select value={dishTypes} onChange={(e) => handleDishTypeChange(e)}>
                   <option value="">All</option>
                   <option value="starter">Starter</option>
                   <option value="soup">Soup</option>
@@ -136,11 +231,12 @@ const NewRecipe = () => {
                 </select>
               </label>
             </div>
+
           </div>
 
           <label className={buttonStyles.inputContainer}>
-            <span>Summary:</span>
-            <textarea value={summary} onChange={(e) => setSummary(e.target.value)} />
+            <span>Instructions:</span>
+            <textarea value={instructions} onChange={(e) => setInstructions(e.target.value)} />
           </label>
 
           <button className={buttonStyles.button_1} type="submit">

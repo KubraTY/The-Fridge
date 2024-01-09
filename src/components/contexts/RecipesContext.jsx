@@ -39,9 +39,10 @@ const RecipesContextProvider = ({children}) => {
         fetchRecipes()
     }, [])
     return(
-       <RecipesContext.Provider value={{fetchRecipes, recipes, addRecipe}}>
+      
+      <RecipesContext.Provider value={{fetchRecipes, recipes, addRecipe}}>
         {children}
-       </RecipesContext.Provider>
+      </RecipesContext.Provider>
     )
 }
 
