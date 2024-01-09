@@ -1,45 +1,34 @@
-import { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useContext } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import styles from '../styles/RecipeDetails.module.css';
 import parse from 'html-react-parser';
 import buttonStyles from '../styles/Buttons.module.css';
+import { RecipesContext } from "../components/contexts/RecipesContext";
 
 const RecipeDetails = () => {
-    const { recipeId } = useParams()
-    const navigate = useNavigate ()
+    const {recipe,fetchOneRecipe } = useContext(RecipesContext);
+    const { recipeId } = useParams() ;
     
-    const [recipe, setRecipe] = useState({})
+   
+    useEffect(() => {
+      fetchOneRecipe(recipeId)
+    }, [])
 
-    const fetchOneRecipe = async () => {
+    console.log(recipe)
+    
+    const handleDelete = async () => {
         try {
-            const response = await fetch(`http://localhost:4000/recipes/${recipeId}`)
-            if (response.ok) {
-              const recipeData = await response.json()
-              setRecipe(recipeData)
-            }
-          } catch (error) {
-            console.log(error)
+          const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/${recipeId}`, {
+            method: 'DELETE',
+          })
+          if (response.ok) {
+            /* here we need to add some instructions to delete the card from the AllRecipes page as well */
             navigate('/allrecipes')
           }
-    }
-
-    useEffect(() => {
-        fetchOneRecipe()
-      }, [recipeId])
-
-    const handleDelete = async () => {
-      try {
-        const response = await fetch(`http://localhost:4000/recipes/${recipeId}`, {
-          method: 'DELETE',
-        })
-        if (response.ok) {
-          /* here we need to add some instructions to delete the card from the AllRecipes page as well */
-          navigate('/allrecipes')
+        } catch (error) {
+          console.error(error)
         }
-      } catch (error) {
-        console.error(error)
       }
-    }
 
   return (
     <>
