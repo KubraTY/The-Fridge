@@ -25,7 +25,6 @@ const SearchForm = () => {
       diets: Object.keys(diets).filter((diet) => diets[diet]),
     };
 
-    // Call the context function to update filtered recipes
     updateFilteredRecipes(searchCriteria);
   };
 

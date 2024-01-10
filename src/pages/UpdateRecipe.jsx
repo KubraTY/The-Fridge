@@ -43,7 +43,7 @@ const handleIngredientSubmit = (e) => {
 
     e.target.form.elements.ingredients.value = '';
 
-    console.log('Ingredient added');
+    //console.log('Ingredient added');
   };
 
 const handleDeleteIngredient = (index) => {

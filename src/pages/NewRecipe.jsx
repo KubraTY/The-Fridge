@@ -38,8 +38,6 @@ const NewRecipe = () => {
     setExtendedIngredients([...extendedIngredients, newIngredient]);
 
     e.target.form.elements.ingredients.value = '';
-
-    console.log('Ingredient added');
   };
 
   const handleDeleteIngredient = (index) => {

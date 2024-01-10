@@ -18,7 +18,7 @@ const RecipesContextProvider = ({children}) => {
                 if (!filteredRecipes.length) {
                   setFilteredRecipes(recipesData);
                 }
-                console.log(recipesData);
+                //console.log(recipesData);
             }
         } catch (error) {
             console.error(error);
@@ -47,7 +47,7 @@ const RecipesContextProvider = ({children}) => {
 
             const addedRecipe = response.data;
             setRecipes((prevRecipes) => [...prevRecipes, addedRecipe]);
-            console.log(addedRecipe, "recipe added")
+            //console.log(addedRecipe, "recipe added")
           }
         } catch (error) {
           console.error(error);
@@ -55,18 +55,25 @@ const RecipesContextProvider = ({children}) => {
       };
 
       const updateFilteredRecipes = (searchCriteria) => {
-        // Implement your filtering logic here
+
         const filtered = recipes.filter((recipe) => {
-          // Filtering based on keywords
+          const ingredients = recipe.extendedIngredients.map((ingredient => ingredient.original))
+          //console.log(ingredients)
           const hasKeywords = searchCriteria.keywords.every((keyword) =>
-            recipe.title.toLowerCase().includes(keyword.toLowerCase())
-          );
+          ingredients.some((ingredient) => ingredient.toLowerCase().includes(keyword.toLowerCase()))
+            
+        );
     
-          // Filtering based on dishType
           const hasDishType = !searchCriteria.dishType || recipe.dishTypes.includes(searchCriteria.dishType);
     
-          // Filtering based on diets
-          const hasDiets = searchCriteria.diets.every((diet) => recipe.diets.includes(diet));
+
+          const hasDiets = searchCriteria.diets.every((diet) => {
+          
+            if (diet === 'vegetarian' && recipe.diets.includes('vegan')) {
+              return true;
+            }
+            return recipe.diets.includes(diet);
+          });
     
           return hasKeywords && hasDishType && hasDiets;
         });

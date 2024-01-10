@@ -11,7 +11,7 @@ const AllRecipes = () => {
   const { recipes } = useContext(RecipesContext)
 
   useEffect(() => {
-    console.log(recipes)
+    //console.log(recipes)
   }, [recipes]);
 
   return (

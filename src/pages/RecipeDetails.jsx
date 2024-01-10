@@ -16,7 +16,7 @@ const RecipeDetails = () => {
       fetchOneRecipe(recipeId)
     }, [])
 
-    console.log(recipe)
+    //console.log(recipe)
     
     const handleDelete = async () => {
       const confirmDelete = window.confirm(`Are you sure you want to delete this recipe? There's no going back once it's done`);
