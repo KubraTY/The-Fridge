@@ -64,7 +64,7 @@ const About = () => {
       </a>
     </Card>
   </Grid.Col>
-      <Grid.Col span={3}>
+      <Grid.Col span={4}>
       <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Card.Section>
         <Image
