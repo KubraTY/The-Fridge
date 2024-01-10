@@ -244,7 +244,7 @@ const handleSubmit = async event => {
         </label>
 
         <button className={buttonStyles.button_1} type="submit">
-          Edit Recipe
+          Save changes
         </button>
       </form>
     </div>
