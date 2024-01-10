@@ -1,11 +1,11 @@
 @import '../App.css';
 
 .footer {
-    background-color: var(--main-orange);
-    color: #fff;
+    background-color: var(--main-orange) !important;
     padding: 5px;
     text-align: center;
-
+    color : var(--main-background);
+    position: fixed;
 }
 
 .footerContent {
@@ -13,3 +13,4 @@
     margin: 0 auto;
     font-size: 14px;
 }
+

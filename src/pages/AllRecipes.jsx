@@ -25,9 +25,11 @@ const AllRecipes = () => {
       key={recipe.id}
       id={recipe.id}
       image={recipe.image}
-      cuisines={recipe.cuisines} 
       title={recipe.title}
-      summary={recipe.summary}
+      readyInMinutes={recipe.readyInMinutes} 
+      servings={recipe.servings}
+      dishTypes={recipe.dishTypes}
+      diets={recipe.diets}
     />
   </Link>
 ))}

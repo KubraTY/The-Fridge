@@ -1,15 +1,19 @@
 import React from 'react';
 import styles from '../styles/Footer.module.css'
-
+import { AppShell } from '@mantine/core'
 
 const Footer = () => {
     return (
-        <footer className={styles.footer}>
+        <AppShell>
+
+        <AppShell.Footer className={styles.footer}>
             <div className={styles.footerContent}>
-                <p>&copy; 2023 Your Website Name. All rights reserved.</p>
+                <p > 2023 The Fridge. All rights reserved.</p>
             </div>
-        </footer>
+        </AppShell.Footer>
+        </AppShell>
     );
 };
+
 
 export default Footer;
