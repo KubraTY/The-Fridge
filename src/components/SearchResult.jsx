@@ -21,12 +21,14 @@ const SearchResults = () => {
           {filteredRecipes.map((recipe) => (
             <Link key={recipe.id} to={`/recipeDetail/${recipe.id}`}>
               <RecipeCard
-                key={recipe.id}
-                id={recipe.id}
-                image={recipe.image}
-                cuisines={recipe.cuisines}
-                title={recipe.title}
-                summary={recipe.summary}
+              key={recipe.id}
+              id={recipe.id}
+              image={recipe.image}
+              title={recipe.title}
+              readyInMinutes={recipe.readyInMinutes} 
+              servings={recipe.servings}
+              dishTypes={recipe.dishTypes}
+              diets={recipe.diets}
               />
             </Link>
           ))}
