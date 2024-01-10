@@ -1,4 +1,3 @@
-import React from "react";
 import classes from '../styles/RecipeCard.module.css';
 import { useNavigate } from "react-router-dom";
 import { Card, Image, Text, Badge, Group } from '@mantine/core';
@@ -37,7 +36,7 @@ const RecipeCard = ({ id, title, cuisines, image, summary, ingredients }) => {
   <div>
     {cuisines && cuisines.length > 0 && (
       cuisines.map((cuisine, index) => {
-        console.log("Cuisine:", cuisine);
+        
         return (
           <Badge key={index} color="#f4612d" style={{ marginRight: '4px' }}>
             {cuisine}
