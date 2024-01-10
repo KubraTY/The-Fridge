@@ -7,7 +7,16 @@
     flex-direction: column;
     height: 75vh;
     color: var(--label-text-color);
+    margin-top: 50px;
+    margin-bottom: 50px;
+   
 }
+.centeredContainer h1 {
+    font-size: 2.5rem;
+       color: #f4612d;
+    text-align: center;
+    font-weight: 530;
+  }
 
 .formTitle{
     padding-top: 20px;
