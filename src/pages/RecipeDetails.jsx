@@ -7,7 +7,7 @@ import { RecipesContext } from "../components/contexts/RecipesContext";
 import { Badge} from '@mantine/core';
 
 const RecipeDetails = () => {
-    const {recipe,fetchOneRecipe } = useContext(RecipesContext);
+    const {recipe,fetchOneRecipe, fetchRecipes } = useContext(RecipesContext);
     const { recipeId } = useParams() ;
     const navigate = useNavigate()
     
@@ -29,6 +29,7 @@ const RecipeDetails = () => {
           if (response.ok) {
             /* here we need to add some instructions to delete the card from the AllRecipes page as well */
             navigate('/allrecipes')
+            fetchRecipes ();
           }
         } catch (error) {
           console.error(error)
@@ -45,9 +46,23 @@ const RecipeDetails = () => {
           <img src={recipe.image} alt={recipe.title} />
         </div>
         <div className={styles.HeaderboxRight}>
+          <div className={styles.readyInMinutes}>
+          <img className={styles.icon} src='src/assets/clock.png'/>
           <p>Ready in: {recipe.readyInMinutes} min</p>
+          </div>
+          <div className={styles.servings}>
+          <img className={styles.icon} src='src/assets/people.png'/>
           <p>{recipe.servings} serving(s)</p>
-          <div>{recipe.dishTypes}</div>
+          </div>
+          <div>{recipe.dishTypes && recipe.dishTypes.length > 0 && (
+            recipe.dishTypes.map((dishType, index) => {
+            return (
+              <Badge key={index} color="#f4612d" style={{ marginRight: '4px' }}>
+              {dishType}
+              </Badge>
+            );
+            })
+            )}</div>
           <div>
             {recipe.diets && recipe.diets.length > 0 && (
             recipe.diets.map((diet, index) => {

@@ -148,7 +148,7 @@ const handleSubmit = async event => {
                     type="checkbox"
                     value="vegan"
                     checked={vegan}
-                    /* onChange={setVegan(!recipe.vegan)} */
+                    /* onChange={setVegan(!recipe.vegan)} */ 
                   />
                   Vegan
                 </label>
