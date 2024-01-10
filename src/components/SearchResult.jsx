@@ -10,8 +10,18 @@ const SearchResults = () => {
   const { width } = useViewportSize();
   const { filteredRecipes } = useContext(RecipesContext);
 
+  /*useEffect(() => {
+    
+    if (filteredRecipes.length > 0) {
+      const searchResultsElement = document.getElementById('searchResults');
+      if (searchResultsElement) {
+        searchResultsElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [filteredRecipes]);*/
+
   return (
-    <div className="RecipesListPage">
+    <div id="searchResults" className="RecipesListPage">
       {filteredRecipes.length === 0 ? (
         <div>
           <p className={classes.noRecipe}>Sorry, we don't have recipes matching your search criteria.</p>

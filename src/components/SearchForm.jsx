@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import styles from '../styles/SearchForm.module.css';
 import buttonStyles from '../styles/Buttons.module.css';
 import { RecipesContext } from '../components/contexts/RecipesContext';
@@ -14,11 +14,10 @@ const SearchForm = () => {
   });
 
   const { updateFilteredRecipes } = useContext(RecipesContext);
+  const searchResultsRef = useRef(null);
 
   const handleSearch = (e) => {
     e.preventDefault();
-
-    // Build search criteria object
     const searchCriteria = {
       keywords,
       dishType: dishTypeFilter,
@@ -26,6 +25,9 @@ const SearchForm = () => {
     };
 
     updateFilteredRecipes(searchCriteria);
+    if (searchResultsRef.current) {
+      searchResultsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleKeywordSubmit = (e) => {
@@ -98,6 +100,7 @@ const SearchForm = () => {
           Search
         </button>
       </div>
+      <div ref={searchResultsRef}></div>
     </div>
   );
 };
