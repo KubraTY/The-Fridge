@@ -7,8 +7,36 @@ import classes from '../styles/About.module.css'
 const About = () => {
     const {width} = useViewportSize()
 
+/*     const handleOpenLink = (person) => {
+      if (person=="Catherine"){
+      window.open("https://www.linkedin.com/in/catherine-fournier-7245b563/", '_blank')
+      }
+      if (person=="Kubra"){
+        window.open("https://www.linkedin.com/in/catherine-fournier-7245b563/", '_blank')
+        }
+      if (person=="Maxime"){
+        window.open("https://www.linkedin.com/in/catherine-fournier-7245b563/", '_blank')
+        }
+    } */
+
     return(
-        
+    <div className={classes.container}>
+      <h2>Welcome to The Fridge!</h2>
+      <p>
+        <strong>The Fridge</strong> was born from the innovative minds of three passionate students at IronHack, driven by a simple yet relatable problem: the hunger that strikes when you open your fridge and wonder what you can create with the ingredients staring back at you.
+      </p>
+      <p>
+        Our mission is to <span className={classes.emphasize}>transform the daunting "What's for dinner?" question into an exciting opportunity to cook something delicious with what you already have.</span> Whether you're a carnivore, herbivore, or anywhere in between, "The Fridge" helps you discover personalized recipes that perfectly match your available ingredients and dietary choices.
+      </p>
+      <p>
+        Join us on this flavorful journey and let "The Fridge" inspire your next culinary adventure!
+      </p>
+      <p>
+      <span className={classes.emphasize}>Happy cooking,</span><br/>
+        "The Fridge" Team
+      </p>
+    
+    <h2>The team</h2>     
     <Grid className={classes.AboutGrid} cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
       <Grid.Col span={4}>
       <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -26,13 +54,14 @@ const About = () => {
       </Group>
 
       <Text size="sm" c="dimmed">
-        With Fjord Tours you can explore more of the magical fjord landscapes with tours and
-        activities on and around the fjords of Norway
+        Catherine is 
       </Text>
 
-      <Button color="blue" fullWidth mt="sm" radius="md">
+      <a href="https://www.linkedin.com/in/catherine-fournier-7245b563/" target='blank' rel="noopener noreferrer">
+      <Button color="blue" fullWidth mt="sm" radius="md" >
         Linkedin
       </Button>
+      </a>
     </Card>
   </Grid.Col>
       <Grid.Col span={4}>
@@ -55,9 +84,11 @@ const About = () => {
         activities on and around the fjords of Norway
       </Text>
 
+      <a href="https://www.linkedin.com/in/kubra-tokgozlu/" target='blank' rel="noopener noreferrer">
       <Button color="blue" fullWidth mt="sm" radius="md">
         Linkedin
       </Button>
+      </a>
     </Card>
 
 
@@ -82,13 +113,16 @@ const About = () => {
         activities on and around the fjords of Norway
       </Text>
 
+      <a href="https://www.linkedin.com/in/maxime-comptier/" target='blank' rel="noopener noreferrer">
       <Button color="blue" fullWidth mt="sm" radius="md">
         Linkedin
       </Button>
+      </a>
     </Card>
 
       </Grid.Col>
     </Grid>
+  </div>
   );
   }
             
