@@ -9,7 +9,8 @@ const RecipeCard = ({ id, title, image, readyInMinutes, servings, dishTypes, die
 
   // Limiter le texte à maxLength caractères et ajouter des points de suspension si nécessaire
   
-  const limitedTitle = title.length > titleMaxLength ? `${title.slice(0, titleMaxLength)}...` : title;
+  const limitedTitle = 
+    title && title.length > titleMaxLength ? `${title.slice(0, titleMaxLength)}...` : title;
 
   const navigate = useNavigate();
 
@@ -34,27 +35,32 @@ const RecipeCard = ({ id, title, image, readyInMinutes, servings, dishTypes, die
         </Card.Section>
        
   <Indicator inline label={`${readyInMinutes} min`} size={50}>
-  <Group justify="space-between" mt="sm" mb="xs">
-  <Text fw={700} c="#252525">{limitedTitle}</Text>
-  </Group>
+    <Group justify="space-between" mt="sm" mb="xs">
+      <Text fw={700} c="#252525">{limitedTitle}
+      </Text>
+    </Group>
   </Indicator>
-  <Text fw={500} c="#252525">Servings : {servings}</Text>
+
+  <Text fw={500} c="#252525">
+    Servings : {servings}
+  </Text>
   
   <Group justify="space-between" mt="sm" mb="xs">
- 
-  <div>
-  <p > <span className={classes.dishtitle}>Diet :</span>
-  {diets && diets.length > 0 && (
-    diets.slice(0, 2).map((diet, index) => {
-      return (
-        <Badge key={index} color="#f4612d" style={{ marginRight: '4px' }}>
-          {diet}
-        </Badge>
-      );
-    })
-  )}</p>
-</div>
-  </Group>  
+      <div>
+      <p > 
+        <span className={classes.dishtitle}>Diet :</span>
+      {diets && diets.length > 0 && (
+        diets.slice(0, 2).map((diet, index) => {
+          return (
+            <Badge key={index} color="#f4612d" style={{ marginRight: '4px' }}>
+              {diet}
+            </Badge>
+          );
+        })
+      )}
+      </p>
+    </div>
+      </Group>  
   <div>
     <p > <span className={classes.dishtitle}>Dish Type :</span>
     {dishTypes && dishTypes.length > 0 && (
