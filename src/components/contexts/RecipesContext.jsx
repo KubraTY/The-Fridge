@@ -57,7 +57,7 @@ const RecipesContextProvider = ({children}) => {
       const updateFilteredRecipes = (searchCriteria) => {
 
         const filtered = recipes.filter((recipe) => {
-          const ingredients = recipe.extendedIngredients.map((ingredient => ingredient.original))
+          const ingredients = (recipe.extendedIngredients || []).map((ingredient => ingredient.original))
           //console.log(ingredients)
           const hasKeywords = searchCriteria.keywords.every((keyword) =>
           ingredients.some((ingredient) => ingredient.toLowerCase().includes(keyword.toLowerCase()))
