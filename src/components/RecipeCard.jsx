@@ -5,7 +5,7 @@ import { Card, Image, Text, Badge, Group,Indicator } from '@mantine/core';
 
 const RecipeCard = ({ id, title, image, readyInMinutes, servings, dishTypes, diets }) => {
 
-  const titleMaxLength = 40;
+  const titleMaxLength = 35;
 
   // Limiter le texte à maxLength caractères et ajouter des points de suspension si nécessaire
   
