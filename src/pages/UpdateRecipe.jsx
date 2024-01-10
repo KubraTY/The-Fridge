@@ -46,9 +46,43 @@ const handleIngredientSubmit = (e) => {
     console.log('Ingredient added');
   };
 
+const handleDeleteIngredient = (index) => {
+    setExtendedIngredients((prevIngredients) => {
+      const updatedIngredients = [...prevIngredients];
+      updatedIngredients.splice(index, 1);
+    return updatedIngredients; 
+    // small bug here > when i delete an ingredient that was preivously there, it reloads the recipeDetails page
+    });
+}; 
+
+const handleDietChange = (e) => {
+    const { value, checked } = e.target;
+
+    if (value === "glutenFree") {
+      setGlutenFree(!glutenFree);
+    }
+    if (value === "vegan") {
+      setVegan(!vegan);
+    }
+    if (value === "vegetarian") {
+      setVegetarian(!vegetarian);
+    }
+    if (value === "dairyFree") {
+      setDairyFree(!dairyFree);
+    }
+
+    setDiets((prevDiets) => {
+      if (checked) {
+        return [...prevDiets, value];
+      } else {
+        return prevDiets.filter((diet) => diet !== value);
+      }
+    });
+  };
+
 const handleSubmit = async event => {
     event.preventDefault()
-    const payload = { title, description }
+    const payload = { title, image, vegan, vegetarian, glutenFree, dairyFree, dishTypes, diets, instructions, extendedIngredients, readyInMinutes, servings }
 
     try {
       const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/recipes/${recipeId}`, {
@@ -92,11 +126,11 @@ const handleSubmit = async event => {
 
             
          <div className={styles.ingredientsContainer}>
-           {/* <div className={buttonStyles.inputContainer}>
+           <div className={buttonStyles.inputContainer}>
             <input
               type="text"
               name="ingredients"
-              placeholder="Ingredient..."
+              placeholder="Add an ingredient here"
             />
             <button
               className={buttonStyles.button_1}
@@ -112,7 +146,7 @@ const handleSubmit = async event => {
                 {ingredient.original} <button onClick={() => handleDeleteIngredient(index)}>X</button>
               </div>
          ))}  
-        </div>   */}
+        </div>   
 
           <div className={styles.containerForTwo} >
             <label className={buttonStyles.inputContainer}>
@@ -148,7 +182,7 @@ const handleSubmit = async event => {
                     type="checkbox"
                     value="vegan"
                     checked={vegan}
-                    /* onChange={setVegan(!recipe.vegan)} */ 
+                    onChange={handleDietChange}
                   />
                   Vegan
                 </label>
@@ -159,7 +193,7 @@ const handleSubmit = async event => {
                     type="checkbox"
                     value="vegetarian"
                     checked={vegetarian}
-                    /* onChange={setVegetarian(!recipe.vegetarian)} */
+                    onChange={handleDietChange}
                   />
                   Vegetarian
                 </label>
@@ -170,7 +204,7 @@ const handleSubmit = async event => {
                     type="checkbox"
                     value="glutenFree"
                     checked={glutenFree}
-                    /* onChange={setGlutenFree(!recipe.glutenFree)} */
+                    onChange={handleDietChange}
                   />
                   Gluten Free
                 </label>
@@ -181,7 +215,7 @@ const handleSubmit = async event => {
                     type="checkbox"
                     value="dairyFree"
                     checked={dairyFree}
-                   /*  onChange={setDiets(!recipe.dairyFree)} */
+                    onChange={handleDietChange}
                   />
                   Dairy Free
                 </label>
