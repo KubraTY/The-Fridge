@@ -8,7 +8,7 @@ const Navbar = () => {
         <ul>
             <div className={classes.leftNavbar}>
                 <NavLink to='/' className={({ isActive }) => (isActive ? 'active' : '')}>   
-                <img src='src/assets/fridge-icon.png'/>
+                <img src='src/assets/white-icon.png'/>
                 </NavLink>
             </div>
             <div className={classes.rightNavbar}>

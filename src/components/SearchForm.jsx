@@ -50,6 +50,7 @@ const SearchForm = () => {
 
   return (
     <div className={styles.centeredContainer}>
+      <img src="/src/assets/orange-icon.png" height="100px"/>
       <h1 className={styles.formTitle}>"From Fridge to Feast: Your Culinary Journey Begins Here"</h1>
       <div className={styles.formContainer}>
         <form onSubmit={handleKeywordSubmit} className={styles.form}>
