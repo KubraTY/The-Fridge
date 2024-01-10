@@ -27,9 +27,11 @@ const SearchResults = () => {
         key={recipe.id}
         id={recipe.id}
         image={recipe.image}
-        cuisines={recipe.cuisines} 
+        readyInMinutes={recipe.readyInMinutes} 
         title={recipe.title}
-        summary={recipe.summary}
+        servings={recipe.servings}
+        dishTypes={recipe.dishTypes}
+        diets={recipe.diets}
       />
     </Link>
       ))}
