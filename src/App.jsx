@@ -1,7 +1,6 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import SearchResults from './components/SearchResult';
 import AllRecipes from './pages/AllRecipes';
 import RecipeDetails from "./pages/RecipeDetails";
 import NewRecipe from "./pages/NewRecipe";

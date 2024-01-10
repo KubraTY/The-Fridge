@@ -35,7 +35,7 @@ const About = () => {
       </Button>
     </Card>
   </Grid.Col>
-      <Grid.Col span={4}>
+      <Grid.Col span={3}>
       <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Card.Section>
         <Image
