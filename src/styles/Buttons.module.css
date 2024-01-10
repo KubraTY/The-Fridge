@@ -16,6 +16,24 @@
   color: var(--main-orange);
 }
 
+.button_2 {
+  background-color: var(--main-background);
+  color: var(--main-orange);
+  font-weight: 600;
+  padding: 5px 15px;
+  border: solid 2px;
+  border-color: var(--main-orange); ;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 5px;
+}
+
+.button_2:hover {
+  background-color: var(--main-orange);
+  color: white;
+}
+
 /* keyword styling */
 .keyword {
   background-color: var(--main-orange);

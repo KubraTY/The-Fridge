@@ -29,7 +29,8 @@ border-radius: 5px;
 .HeaderboxRight {
 display: flex;
 flex-direction: column;
-padding: 50px;
+font-size: larger;
+margin: 70px;
 }
 
 .Mainbox {
@@ -47,13 +48,36 @@ list-style: circle;
 }
 
 .EditBox{
-padding: 20px;
 display: flex;
 flex-direction: row;
-justify-content: center;
+justify-content: left;
 gap: 20px;
+margin: 20px;
 }
 
 .icon {
-  height: 20px;
+  height: 30px;
+}
+
+.readyInMinutes{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin: 10px;
+}
+
+.servings{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin: 10px;
+}
+
+.labelsBox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
 }

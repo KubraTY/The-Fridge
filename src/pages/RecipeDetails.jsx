@@ -47,33 +47,52 @@ const RecipeDetails = () => {
         </div>
         <div className={styles.HeaderboxRight}>
           <div className={styles.readyInMinutes}>
-          <img className={styles.icon} src='src/assets/clock.png'/>
+          <img className={styles.icon} src='/src/assets/clock.png'/>
           <p>Ready in: {recipe.readyInMinutes} min</p>
           </div>
           <div className={styles.servings}>
-          <img className={styles.icon} src='src/assets/people.png'/>
+          <img className={styles.icon} src='/src/assets/people.png'/>
           <p>{recipe.servings} serving(s)</p>
           </div>
-          <div>{recipe.dishTypes && recipe.dishTypes.length > 0 && (
-            recipe.dishTypes.map((dishType, index) => {
-            return (
-              <Badge key={index} color="#f4612d" style={{ marginRight: '4px' }}>
-              {dishType}
-              </Badge>
-            );
-            })
-            )}</div>
-          <div>
-            {recipe.diets && recipe.diets.length > 0 && (
-            recipe.diets.map((diet, index) => {
-            return (
-              <Badge key={index} color="#f4612d" style={{ marginRight: '4px' }}>
-              {diet}
-              </Badge>
-            );
-            })
+          <div className={styles.labelsBox}>
+            <h2>Dish Type(s):</h2>
+            <div>{recipe.dishTypes && recipe.dishTypes.length > 0 && (
+              recipe.dishTypes.map((dishType, index) => {
+              return (
+                <Badge key={index} color="#f4612d" style={{ margin: '8px' }}>
+                {dishType}
+                </Badge>
+              );
+              })
             )}
+            
+            </div>
+          </div>
+          <div className={styles.labelsBox}>
+            <h2>Diet(s):</h2>
+            <div>
+              {recipe.diets && recipe.diets.length > 0 && (
+              recipe.diets.map((diet, index) => {
+               return (
+                <Badge key={index} color="#f4612d" style={{ margin: '8px' }}>
+                {diet}
+                </Badge>
+                );
+                })
+              )}
+            </div>
            </div>
+           <div className={styles.EditBox}>
+      <button type='button' onClick={handleDelete} className={buttonStyles.button_2}>
+        Delete this recipe
+      </button>
+      <Link to={`/recipeDetail/${recipeId}/update`}>
+      <button type='button' className={buttonStyles.button_2}>
+        Edit this recipe
+      </button>
+        </Link>
+
+      </div>
         </div>
       </div>
       <div className={styles.Mainbox}>
@@ -94,17 +113,6 @@ const RecipeDetails = () => {
             : <p>loading</p>
           }
         </div>
-      </div>
-      <div className={styles.EditBox}>
-      <button type='button' onClick={handleDelete} className={buttonStyles.button_1}>
-        Delete this recipe
-      </button>
-      <Link to={`/recipeDetail/${recipeId}/update`}>
-      <button type='button' className={buttonStyles.button_1}>
-        Edit this recipe
-      </button>
-        </Link>
-
       </div>
     </>
   )
