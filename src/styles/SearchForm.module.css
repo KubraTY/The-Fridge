@@ -13,10 +13,9 @@
     margin-bottom: 50px;
    
 }
-.centeredContainer .title {
-    font-size: 32px;
-    color:var(--main-orange);
-    display: flex;
+.centeredContainer h1 {
+    font-size: 2.5rem;
+       color: var(--main-orange);
     text-align: center;
     font-weight: 500;
     justify-content: center;

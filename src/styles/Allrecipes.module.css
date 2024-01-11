@@ -7,11 +7,12 @@
     color: #333;
   }
 
-.container h1 {
+  @import '../App.css';
+  .container h1 {
     font-size: 2.5rem;
     margin-bottom: 30px;
     margin-top: 40px;
-    color: #f4612d;
+    color: var(--main-orange);
     text-align: center;
     font-weight: 530;
   }
