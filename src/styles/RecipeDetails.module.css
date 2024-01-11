@@ -1,40 +1,7 @@
-<<<<<<< HEAD
-/* :root {
-  --main-orange: #f4612d;
-  --main-background: #ffffff;
-  --main-title-color: #252525;
-  --text-color: #8e8e8e;
-  --label-text-color: #606060;
-  --orange-light: #f4c0b0;
-  --background-light-grey: #f6f6f6;
-  --border-white-grey: #dbdbdb;
-} */
-
-
-body{
-  margin:0px;
-  padding: 0px;
-}
-
-.header:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: -1;
-}
-
-.h1 {
-  color:white;
-=======
 @import '../App.css';
 .h1 {
   color:var(--main-orange);
   font-size: 40px;
->>>>>>> d1d798a (style recipe card, change every color with var from app.css)
   font-weight: 600;
   text-align: center;
   padding: 20px;
@@ -46,17 +13,6 @@ body{
   font-weight: 530;
 }
 
-<<<<<<< HEAD
-.generalInfo{
-  font-family: Arial, sans-serif;
-  font-size: 1.3rem;
-  margin: Opx;
-  margin-bottom: 10px;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-=======
 .h2 {
   color:var(--main-orange);
   font-size: 30px;
@@ -108,7 +64,6 @@ margin: 20px;
 
 .icon {
   height: 30px;
->>>>>>> d1d798a (style recipe card, change every color with var from app.css)
 }
 
 .readyInMinutes{
