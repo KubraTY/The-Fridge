@@ -38,7 +38,12 @@ const SearchResults = () => {
               readyInMinutes={recipe.readyInMinutes} 
               servings={recipe.servings}
               dishTypes={recipe.dishTypes}
-              diets={recipe.diets}
+              vegan={recipe.vegan}
+              vegetarian={recipe.vegetarian}
+              glutenFree={recipe.glutenFree}
+              dairyFree={recipe.dairyFree}
+
+              
               />
             </Link>
           ))}
