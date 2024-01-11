@@ -1,8 +1,8 @@
 # The Fridge
 
-## [Go to the Fridge!](https://dazzling-nougat-f934c6.netlify.app/)
+## [<img src="./src/images/logo_.png" alt="The Fridge Logo" width="30"/>  Go to the Fridge!](https://dazzling-nougat-f934c6.netlify.app/)  
 
-![The Fridge Logo](./src/images/logo_.png)
+
 
 Welcome to The Fridge, your culinary companion for creative recipes based on your fridge's ingredients!
 
