@@ -61,7 +61,7 @@ const SearchForm = () => {
   return (
     <div className={styles.centeredContainer}>
       <div className={styles.title} >
-        <img src={fridge} height="40px"/>
+        <img src={fridge} className={styles.icon}/>
         <h1>What's in your fridge ?</h1>
       </div>
       <p className={styles.formTitle}>"From Fridge to Feast: Your Culinary Journey Begins Here"</p>

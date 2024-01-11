@@ -22,6 +22,7 @@
 }
 
 .formTitle{
+    display: flex;
     padding-top: 20px;
     padding-bottom: 20px;
     font-style: italic;
@@ -83,6 +84,15 @@
     cursor: pointer;
 }
 
+.icon {
+    height: 70px;
+    align-self: center;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+}
 @media (max-width: 599px) {
     .formContainer{
         padding: 20px 10px;
