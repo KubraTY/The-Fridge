@@ -8,6 +8,7 @@
     height: 100%;
     margin-block: 30px;
     color: var(--label-text-color);
+    margin: 50px 0px 100px 0px;
 }
 
 .formTitle{

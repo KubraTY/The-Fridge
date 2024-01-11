@@ -34,7 +34,7 @@ const RecipeCard = ({ id, title, image, readyInMinutes, servings, dishTypes, die
           />
         </Card.Section>
        
-  <Indicator inline label={`${readyInMinutes} min`} size={50}>
+  <Indicator color="#f4612d" withBorder size={50} inline label={`${readyInMinutes} min`}>
     <Group justify="space-between" mt="sm" mb="xs">
       <Text fw={700} c="#252525">{limitedTitle}
       </Text>
@@ -52,7 +52,7 @@ const RecipeCard = ({ id, title, image, readyInMinutes, servings, dishTypes, die
       {diets && diets.length > 0 && (
         diets.slice(0, 2).map((diet, index) => {
           return (
-            <Badge key={index} color="#f4612d" style={{ marginRight: '4px' }}>
+            <Badge key={index} color="#f4c0b0" style={{ marginRight: '4px' }}>
               {diet}
             </Badge>
           );
@@ -67,7 +67,7 @@ const RecipeCard = ({ id, title, image, readyInMinutes, servings, dishTypes, die
       dishTypes.slice(0, 6).map((dishType, index) => {
         
         return (
-          <Badge key={index} color="#f4612d" style={{ marginRight: '4px' }}>
+          <Badge key={index} color="#f4c0b0" style={{ marginRight: '4px' }}>
            {dishType}
           </Badge>
         );

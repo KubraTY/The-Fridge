@@ -1,9 +1,10 @@
+@import '../App.css';
 .container{
-    background-color: #f6f6f6;
+    background-color:var(--background-light-grey);
     margin: 20px;
 }
 .dishtitle{
-    color: #252525;
+    color: var(--main-title-color);
     margin-right: 10px;
     font-weight: 500;
 }
