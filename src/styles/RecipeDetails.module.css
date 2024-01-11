@@ -63,6 +63,11 @@ body{
   margin: 10px;
 }
 
+.dietLabels{
+  display: flex;
+  align-items: center;
+}
+
 .EditBox{
   display: flex;
   flex-direction: row;
@@ -124,7 +129,8 @@ flex-direction: row;
   margin-right: 0px;
   padding: 30px;
   border-radius: 20px;
-  background-color: var(--orange-light);
+  border: var(--orange-light) solid 5px;
+  background-color: white;
 }
 
 .ol {
@@ -134,7 +140,7 @@ list-style: decimal;
 .ul {
 list-style: circle;
 padding-left: 20px; 
-color: #f4612d;
+color: black;
 font-weight: 600;
 line-height: 2;
 }

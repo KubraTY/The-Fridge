@@ -5,6 +5,8 @@ import parse from 'html-react-parser';
 import buttonStyles from '../styles/Buttons.module.css';
 import { RecipesContext } from "../components/contexts/RecipesContext";
 import { Badge} from '@mantine/core';
+import clock from  '../assets/clock.png';
+import people from  '../assets/people.png';
 
 const RecipeDetails = () => {
     const {recipe,fetchOneRecipe, fetchRecipes } = useContext(RecipesContext);
@@ -46,9 +48,6 @@ const RecipeDetails = () => {
     textAlign: 'center',
     padding: '100px 0',
     zIndex: '1',
-    left:"0",
-    borderRadius:"20px",
-    marginTop:"20px"
   } 
 
   return (
@@ -58,11 +57,11 @@ const RecipeDetails = () => {
      </header>
      <div className={styles.generalInfo}>
         <div className={styles.readyInMinutes}>
-          <img className={styles.icon} src='/src/assets/clock.png'/>
+          <img className={styles.icon} src={clock}/>
           <p>Ready in {recipe.readyInMinutes} min</p>
         </div>
         <div className={styles.servings}>
-          <img className={styles.icon} src='/src/assets/people.png'/>
+          <img className={styles.icon} src={people}/>
           <p>{recipe.servings} serving(s)</p>
         </div>
         <div className={styles.labelsBox}>
@@ -80,7 +79,7 @@ const RecipeDetails = () => {
         </div>
         <div className={styles.labelsBox}>
           <h2>Diet(s):</h2>
-          <div>
+          <div className={styles.dietLabels}>
               {recipe.diets && recipe.diets.length > 0 && (
               recipe.diets.map((diet, index) => {
                return (
