@@ -64,7 +64,7 @@ const RecipesContextProvider = ({children}) => {
             
         );
     
-          const hasDishType = !searchCriteria.dishType || recipe.dishTypes.includes(searchCriteria.dishType);
+          const hasDishType = !searchCriteria.dishType || (recipe.dishTypes && recipe.dishTypes.includes(searchCriteria.dishType));
     
 
           const hasDiets = searchCriteria.diets.every((diet) => {
