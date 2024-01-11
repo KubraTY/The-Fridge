@@ -1,42 +1,117 @@
+/* :root {
+  --main-orange: #f4612d;
+  --main-background: #ffffff;
+  --main-title-color: #252525;
+  --text-color: #8e8e8e;
+  --label-text-color: #606060;
+  --orange-light: #f4c0b0;
+  --background-light-grey: #f6f6f6;
+  --border-white-grey: #dbdbdb;
+} */
+
+
+body{
+  margin:0px;
+  padding: 0px;
+}
+
+.header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
 .h1 {
-  color:#f4612d;
-  font-size: 40px;
+  color:white;
   font-weight: 600;
   text-align: center;
   padding: 20px;
+  z-index: 1;
+  font-family: Arial, sans-serif;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  font-weight: 530;
 }
+
+.generalInfo{
+
+  margin: Opx;
+  margin-bottom: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.readyInMinutes{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin: 10px;
+}
+
+.servings{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin: 10px;
+}
+
+.labelsBox{
+  width:400px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 10px;
+}
+
+.EditBox{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  gap: 20px;
+  margin: 20px;
+  }
 
 .h2 {
   color:#f4612d;
   font-size: 30px;
   font-weight: 600;
 }
-.Headerbox {
-margin: 10px;
-border-color: #f4c0b0;
-border:#f4c0b0;
-border-style: dashed;
-border-radius: 6px;
+
+.Mainbox {
 display: flex;
 flex-direction: row;
 }
 
-.HeaderboxLeft{
-padding: 30px;
-border-radius: 5px;
+.MainboxLeft{
+  padding: 20px;
+  width: 70%;
+  background-color: var(--background-light-grey);
+  border-radius: 20px;
+  margin: 10px;
+  margin-left: 0px;
 }
 
-.HeaderboxRight {
-display: flex;
-flex-direction: column;
-font-size: larger;
-margin: 70px;
+.MainboxRight{
+   width: 30%;
 }
 
-.Mainbox {
-display: flex;
-flex-direction: column;
-padding: 20px;
+.ingredients{
+  margin: 10px;
+  margin-right: 0px;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: var(--orange-light);
 }
 
 .ol {
@@ -47,37 +122,11 @@ list-style: decimal;
 list-style: circle; 
 }
 
-.EditBox{
-display: flex;
-flex-direction: row;
-justify-content: left;
-gap: 20px;
-margin: 20px;
-}
+
 
 .icon {
   height: 30px;
 }
 
-.readyInMinutes{
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
-  margin: 10px;
-}
 
-.servings{
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
-  margin: 10px;
-}
 
-.labelsBox{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 10px;
-}

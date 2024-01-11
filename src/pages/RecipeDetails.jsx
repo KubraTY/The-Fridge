@@ -37,26 +37,34 @@ const RecipeDetails = () => {
       } else { 
       }
     }
+  const headerStyle = {
+    backgroundImage:`url("${recipe.image}")`,
+    position: 'relative',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    color: 'white',
+    textAlign: 'center',
+    padding: '100px 0',
+    zIndex: '1',
+  } 
 
   return (
     <>
-     <h1 className={styles.h1}>{recipe.title}</h1>
-     <div className={styles.Headerbox}>
-        <div className={styles.HeaderboxLeft}>
-          <img src={recipe.image} alt={recipe.title} />
-        </div>
-        <div className={styles.HeaderboxRight}>
-          <div className={styles.readyInMinutes}>
+     <header className={styles.header} style={headerStyle} >
+        <h1 className={styles.h1}>{recipe.title}</h1>
+     </header>
+     <div className={styles.generalInfo}>
+        <div className={styles.readyInMinutes}>
           <img className={styles.icon} src='/src/assets/clock.png'/>
-          <p>Ready in: {recipe.readyInMinutes} min</p>
-          </div>
-          <div className={styles.servings}>
+          <p>Ready in {recipe.readyInMinutes} min</p>
+        </div>
+        <div className={styles.servings}>
           <img className={styles.icon} src='/src/assets/people.png'/>
           <p>{recipe.servings} serving(s)</p>
-          </div>
-          <div className={styles.labelsBox}>
-            <h2>Dish Type(s):</h2>
-            <div>{recipe.dishTypes && recipe.dishTypes.length > 0 && (
+        </div>
+        <div className={styles.labelsBox}>
+          <h2>Dish Type(s):</h2>
+          <div>{recipe.dishTypes && recipe.dishTypes.length > 0 && (
               recipe.dishTypes.map((dishType, index) => {
               return (
                 <Badge key={index} color="#f4612d" style={{ margin: '8px' }}>
@@ -65,12 +73,11 @@ const RecipeDetails = () => {
               );
               })
             )}
-            
-            </div>
           </div>
-          <div className={styles.labelsBox}>
-            <h2>Diet(s):</h2>
-            <div>
+        </div>
+        <div className={styles.labelsBox}>
+          <h2>Diet(s):</h2>
+          <div>
               {recipe.diets && recipe.diets.length > 0 && (
               recipe.diets.map((diet, index) => {
                return (
@@ -80,71 +87,46 @@ const RecipeDetails = () => {
                 );
                 })
               )}
-            </div>
-           </div>
-           <div className={styles.EditBox}>
-      <button type='button' onClick={handleDelete} className={buttonStyles.button_2}>
-        Delete this recipe
-      </button>
-      <Link to={`/recipeDetail/${recipeId}/update`}>
-      <button type='button' className={buttonStyles.button_2}>
-        Edit this recipe
-      </button>
-        </Link>
-
-      </div>
+          </div>
         </div>
-      </div>
-      <div className={styles.Mainbox}>
-      <div>
-        <h2 className={styles.h2}>Ingredients</h2>
-          <ul className={styles.ul}>
-            {recipe.extendedIngredients ?
-            recipe.extendedIngredients.map(ingredient => {return (
-            <li key={ingredient.id}>{ingredient.original}</li>)}) :<p>loading</p> }
-          </ul>
-      </div>
-        <h2 className={styles.h2}>Instructions</h2>
-        <div>
-        {console.log(recipe.instructions)}
+        </div>
+     <div className={styles.Mainbox}>
+        <div className={styles.MainboxLeft}>
+          <img className={styles.recipeImage} src={recipe.image} alt={recipe.title}/>
+          <h2 className={styles.h2}>Instructions</h2>
+          <div>
           { 
             recipe.instructions ?
             <p>{parse(recipe.instructions)}</p>
             : <p>loading</p>
           }
+          </div>
         </div>
-      </div>
+        <div className={styles.MainboxRight}>
+          <div className={styles.ingredients}>
+            <h2 className={styles.h2}>Ingredients</h2>
+            <ul className={styles.ul}>
+              {recipe.extendedIngredients ?
+              recipe.extendedIngredients.map(ingredient => {return (
+              <li key={ingredient.id}>{ingredient.original}</li>)}) :<p>loading</p> }
+            </ul>
+          </div>
+          <div className={styles.EditBox}>
+            <button type='button' onClick={handleDelete} className={buttonStyles.button_2}>
+              Delete this recipe
+            </button>
+            <Link to={`/recipeDetail/${recipeId}/update`}>
+              <button type='button' className={buttonStyles.button_2}>
+                Edit this recipe
+              </button>
+            </Link>
+          </div>
+        </div>
+     </div>
+    
+    
     </>
   )
-  /* return recipe? (
-      <div className={styles.recipe}>
-      <h1>{recipe.label}</h1>
-      
-
-      <div className={styles.labels}>
-        <div className={styles.dietLabels}>
-          <h3>Diet Labels</h3>
-          <ul>
-            {recipe.dietLabels.map((label, index) => (
-              <li key={index}>{label}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className={styles.cuisineType}>
-          <h3>Cuisine Type</h3>
-          <p>{recipe.cuisineType.join(', ')}</p>
-        </div>
-
-        <div className={styles.dishType}>
-          <h2>Dish Type</h2>
-          <p>{recipe.dishType.join(', ')}</p>
-        </div>
-      </div>
-
-  
- 
-     */
 }
 
 export default RecipeDetails;
