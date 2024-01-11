@@ -1,5 +1,7 @@
 @import '../App.css';
 
+
+
 .centeredContainer {
     display: flex;
     justify-content: center;
@@ -11,12 +13,14 @@
     margin-bottom: 50px;
    
 }
-.centeredContainer h1 {
-    font-size: 2.5rem;
-       color: #f4612d;
+.centeredContainer .title {
+    font-size: 32px;
+    color:var(--main-orange);
+    display: flex;
     text-align: center;
-    font-weight: 530;
-  }
+    font-weight: 500;
+    justify-content: center;
+}
 
 .formTitle{
     padding-top: 20px;

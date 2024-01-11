@@ -1,6 +1,5 @@
 import classes from '../styles/Navbar.module.css'
 import { NavLink } from 'react-router-dom'
-import fridgeIcon from '../assets/fridge-icon.png'
 
 const Navbar = () => {
     return(
