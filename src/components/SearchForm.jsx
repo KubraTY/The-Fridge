@@ -25,6 +25,8 @@ const SearchForm = () => {
       diets: Object.keys(diets).filter((diet) => diets[diet]),
     };
 
+    console.log('Search Criteria:', searchCriteria); 
+    
     updateFilteredRecipes(searchCriteria);
     if (searchResultsRef.current) {
       searchResultsRef.current.scrollIntoView({ behavior: 'smooth' });
