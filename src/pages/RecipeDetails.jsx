@@ -94,7 +94,7 @@ const RecipeDetails = () => {
         <div className={styles.MainboxLeft}>
           <img className={styles.recipeImage} src={recipe.image} alt={recipe.title}/>
           <h2 className={styles.h2}>Instructions</h2>
-          <div>
+          <div className={styles.instructions}>
           { 
             recipe.instructions ?
             <p>{parse(recipe.instructions)}</p>
