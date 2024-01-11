@@ -72,7 +72,7 @@ const RecipesContextProvider = ({children}) => {
             if (diet === 'vegetarian' && recipe.diets.includes('vegan')) {
               return true;
             }
-            return recipe.diets.includes(diet);
+            return recipe.diets && recipe.diets.includes(diet);
           });
     
           return hasKeywords && hasDishType && hasDiets;
