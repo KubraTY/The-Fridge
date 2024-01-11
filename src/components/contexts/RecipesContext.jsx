@@ -68,16 +68,18 @@ const RecipesContextProvider = ({children}) => {
     
 
           const hasDiets = searchCriteria.diets.every((diet) => {
-            
-            if (Array.isArray(recipe.diets)) {
-        
-              if (diet === 'vegetarian' && recipe.diets.includes('vegan')) {
-                return true;
-              }
-            
-              return recipe.diets.includes(diet);
+            switch (diet) {
+              case 'vegetarian':
+                return recipe.vegetarian;
+              case 'vegan':
+                return recipe.vegan;
+              case 'glutenFree':
+                return recipe.glutenFree;
+              case 'dairyFree':
+                return recipe.dairyFree;
+              default:
+                return false;
             }
-            return false;
           });
           return hasKeywords && hasDishType && hasDiets;
         });
