@@ -83,7 +83,7 @@ const RecipesContextProvider = ({children}) => {
           });
           return hasKeywords && hasDishType && hasDiets;
         });
-    
+        console.log('Filtered Recipes:', filtered); 
         setFilteredRecipes(filtered);
       };
 

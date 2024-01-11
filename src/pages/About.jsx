@@ -54,7 +54,7 @@ const About = () => {
       </Group>
 
       <Text size="sm" c="dimmed">
-        Catherine is 
+      Catherine, a French native living in Zürich, traded in her marketing gig for a new adventure as a web developer. Fueling her love for cooking, she navigates daily culinary escapades with The Fridge app, always on the lookout for fresh recipe ideas.
       </Text>
 
       <a href="https://www.linkedin.com/in/catherine-fournier-7245b563/" target='blank' rel="noopener noreferrer">
@@ -80,8 +80,7 @@ const About = () => {
       </Group>
 
       <Text size="sm" c="dimmed">
-        With Fjord Tours you can explore more of the magical fjord landscapes with tours and
-        activities on and around the fjords of Norway
+        I'm a Turkish native with a background in mathematics. Transitioning to IT, I've found excitement in problem-solving and coding. Family time is my greatest joy, and come summer, you'll catch me swimming in the Mediterranean. Join me in this journey where family, IT challenges, and seaside adventures intertwine.
       </Text>
 
       <a href="https://www.linkedin.com/in/kubra-tokgozlu/" target='blank' rel="noopener noreferrer">

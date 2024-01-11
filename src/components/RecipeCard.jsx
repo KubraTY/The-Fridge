@@ -20,14 +20,9 @@ const RecipeCard = ({
   const limitedTitle =
     title && title.length > titleMaxLength ? `${title.slice(0, titleMaxLength)}...` : title;
 
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(`recipes/${id}`);
-  };
 
   return (
-    <div className={classes.container} onClick={handleClick}>
+    <div className={classes.container}>
       <Card shadow="sm" padding="lg" radius="md" withBorder>
         <Card.Section>
           <Image src={image} height={160} alt={title} />
