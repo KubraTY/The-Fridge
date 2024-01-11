@@ -2,6 +2,7 @@ import { Grid } from '@mantine/core';
 import { useViewportSize } from "@mantine/hooks";
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 import classes from '../styles/About.module.css'
+import kubraPP from '../assets/kubra.jpg'
 
 
 const About = () => {
@@ -68,7 +69,7 @@ const About = () => {
       <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Card.Section>
         <Image
-          src="https://media.licdn.com/dms/image/D4D35AQEdI5w-YbC7Cw/profile-framedphoto-shrink_400_400/0/1682181663995?e=1705330800&v=beta&t=hO-zFo6NbJhr6gzsPA2_-bHmRiRMMtaKNIlpPnoKEwA"
+          src={kubraPP}
           height={160}
           alt="Kübra Tokgözlü"
         />
