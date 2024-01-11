@@ -68,14 +68,17 @@ const RecipesContextProvider = ({children}) => {
     
 
           const hasDiets = searchCriteria.diets.every((diet) => {
-          
-
-                         if (diet === 'vegetarian' && recipe.diets.includes('vegan')) {
-              return true;
-            } 
-            return recipe.diets.includes(diet);
+            
+            if (Array.isArray(recipe.diets)) {
+        
+              if (diet === 'vegetarian' && recipe.diets.includes('vegan')) {
+                return true;
+              }
+            
+              return recipe.diets.includes(diet);
+            }
+            return false;
           });
-    
           return hasKeywords && hasDishType && hasDiets;
         });
         console.log('Filtered Recipes:', filtered); 
