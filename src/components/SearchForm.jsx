@@ -2,7 +2,7 @@ import React, { useState, useContext, useRef } from 'react';
 import styles from '../styles/SearchForm.module.css';
 import buttonStyles from '../styles/Buttons.module.css';
 import { RecipesContext } from '../components/contexts/RecipesContext';
-import fridge from "src/assets/orange-icon.png" 
+import fridge from  '../assets/orange-icon.png' 
 
 const SearchForm = () => {
   const [keywords, setKeywords] = useState([]);
