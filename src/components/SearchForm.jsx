@@ -2,6 +2,7 @@ import React, { useState, useContext, useRef } from 'react';
 import styles from '../styles/SearchForm.module.css';
 import buttonStyles from '../styles/Buttons.module.css';
 import { RecipesContext } from '../components/contexts/RecipesContext';
+import fridge from "src/assets/orange-icon.png" 
 
 const SearchForm = () => {
   const [keywords, setKeywords] = useState([]);
@@ -53,7 +54,7 @@ const SearchForm = () => {
   return (
     <div className={styles.centeredContainer}>
       <div className={styles.title} >
-        <img src="src/assets/orange-icon.png" height="40px"/>
+        <img src={fridge} height="40px"/>
         <h1>What'is on your fridge ?</h1>
       </div>
       <p className={styles.formTitle}>"From Fridge to Feast: Your Culinary Journey Begins Here"</p>

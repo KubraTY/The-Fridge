@@ -1,5 +1,6 @@
 import classes from '../styles/Navbar.module.css'
 import { NavLink } from 'react-router-dom'
+import logo from 'src/assets/white-icon.png'
 
 const Navbar = () => {
     return(
@@ -7,7 +8,7 @@ const Navbar = () => {
         <ul>
             <div className={classes.leftNavbar}>
                 <NavLink to='/' className={({ isActive }) => (isActive ? 'active' : '')}>   
-                <img src='src/assets/white-icon.png'/>
+                <img src={logo}/>
                 </NavLink>
             </div>
             <div className={classes.rightNavbar}>
