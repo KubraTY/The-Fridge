@@ -46,6 +46,7 @@ const RecipeDetails = () => {
     textAlign: 'center',
     padding: '100px 0',
     zIndex: '1',
+    left:"0"
   } 
 
   return (

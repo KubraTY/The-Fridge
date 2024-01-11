@@ -106,7 +106,8 @@ const NewRecipe = () => {
 
   return (
     <div className={styles.centeredContainer}>
-      <h1 className={styles.formTitle}>Flavors Unleashed: Create Your Signature Dish</h1>
+      <h2 className={styles.h2}>Add a new recipe</h2>
+      <p className={styles.formTitle}>Flavors Unleashed: Create Your Signature Dish</p>
       <div className={styles.formContainer}>
         <form onSubmit={handleSubmit} className={styles.form}>
 
@@ -115,7 +116,7 @@ const NewRecipe = () => {
             <input
               type="text"
               value={title}
-              placeholder="Your recipe name..."
+              placeholder="Your recipe's name..."
               onChange={(e) => setTitle(e.target.value)}
             />
           </label>
@@ -247,7 +248,7 @@ const NewRecipe = () => {
 
           <label className={buttonStyles.inputContainer}>
             <span>Instructions:</span>
-            <textarea value={instructions} onChange={(e) => setInstructions(e.target.value)} />
+            <textarea placeholder="Write your recipe's instructions here..." value={instructions} onChange={(e) => setInstructions(e.target.value)} />
           </label>
 
           <button className={buttonStyles.button_1} type="submit">
