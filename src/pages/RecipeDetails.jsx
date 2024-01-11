@@ -46,7 +46,9 @@ const RecipeDetails = () => {
     textAlign: 'center',
     padding: '100px 0',
     zIndex: '1',
-    left:"0"
+    left:"0",
+    borderRadius:"20px",
+    marginTop:"20px"
   } 
 
   return (

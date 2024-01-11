@@ -1,7 +1,21 @@
-@import '../App.css';
+body{
+  margin:0px;
+  padding: 0px;
+}
+
+.header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
 .h1 {
-  color:var(--main-orange);
-  font-size: 40px;
+  color:white;
   font-weight: 600;
   text-align: center;
   padding: 20px;
@@ -13,57 +27,15 @@
   font-weight: 530;
 }
 
-.h2 {
-  color:var(--main-orange);
-  font-size: 30px;
-  font-weight: 600;
-}
-.Headerbox {
-margin: 10px;
-border-color:var(--orange-light);
-border:var(--orange-light);
-border-style: dashed;
-border-radius: 6px;
-display: flex;
-flex-direction: row;
-}
-
-.HeaderboxLeft{
-padding: 30px;
-border-radius: 5px;
-}
-
-.HeaderboxRight {
-display: flex;
-flex-direction: column;
-font-size: larger;
-margin: 70px;
-}
-
-.Mainbox {
-display: flex;
-flex-direction: column;
-padding: 20px;
-}
-
-.ol {
-list-style: decimal;
-}
-
-.ul {
-list-style: circle; 
-}
-
-.EditBox{
-display: flex;
-flex-direction: row;
-justify-content: left;
-gap: 20px;
-margin: 20px;
-}
-
-.icon {
-  height: 30px;
+.generalInfo{
+  font-family: Arial, sans-serif;
+  font-size: 1.3rem;
+  margin: Opx;
+  margin-bottom: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .readyInMinutes{
@@ -172,6 +144,4 @@ line-height: 2;
 .icon {
   height: 30px;
 }
-
-
 
