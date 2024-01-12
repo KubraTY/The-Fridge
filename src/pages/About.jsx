@@ -3,7 +3,8 @@ import { useViewportSize } from "@mantine/hooks";
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 import classes from '../styles/About.module.css'
 import kubraPP from '../assets/kubra.jpg'
-
+import cathPP from '../assets/catherine.jpeg'
+import maximePP from '../assets/maxime.jpeg'
 
 const About = () => {
     const {width} = useViewportSize()
@@ -43,7 +44,7 @@ const About = () => {
       <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Card.Section>
         <Image
-          src="https://media.licdn.com/dms/image/C4D03AQFQYYDzyLSZ9Q/profile-displayphoto-shrink_400_400/0/1599212519165?e=1710374400&v=beta&t=Gnoq7f2MW6O5hyfqOU6dOIAh59ayaJEp2_ndgarHRQg"
+          src={cathPP}
           height={160}
           alt="Catherine Fournier"
         />
@@ -55,7 +56,7 @@ const About = () => {
       </Group>
 
       <Text size="sm" c="dimmed">
-      Catherine, a French native living in Zürich, traded in her marketing gig for a new adventure as a web developer. Fueling her love for cooking, she navigates daily culinary escapades with The Fridge app, always on the lookout for fresh recipe ideas.
+      Hey, I'm Catherine, a French native living in Zürich. After a long stint in marketing, I've switched gears to become a web developer. I'm all about cooking and rely on The Fridge app every day for awesome recipe ideas. Join me on this exciting journey of coding and creating delicious recipes!
       </Text>
 
       <a href="https://www.linkedin.com/in/catherine-fournier-7245b563/" target='blank' rel="noopener noreferrer">
@@ -97,7 +98,7 @@ const About = () => {
       <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Card.Section>
         <Image
-          src="https://media.licdn.com/dms/image/C5603AQE37acVQZw8SQ/profile-displayphoto-shrink_400_400/0/1633614104331?e=1710374400&v=beta&t=PRphWC81pQvr4UIfZPTBQ_8RdtytI7PPiCElTv7lzkQ"
+          src={maximePP}
           height={160}
           alt="Maxime Comptier"
         />
@@ -109,8 +110,7 @@ const About = () => {
       </Group>
 
       <Text size="sm" c="dimmed">
-        With Fjord Tours you can explore more of the magical fjord landscapes with tours and
-        activities on and around the fjords of Norway
+      Greetings! I’m a French native with a rich background in Growth Marketing. By day, I navigate the digital landscape, crafting strategies for growth. By night, I transform into a DJ, unleashing beats and rhythms. Intrigued by nature and driven by curiosity, I find joy in the world of web development. Let’s explore and create together! 
       </Text>
 
       <a href="https://www.linkedin.com/in/maxime-comptier/" target='blank' rel="noopener noreferrer">
