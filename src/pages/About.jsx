@@ -1,6 +1,6 @@
 import { Grid } from '@mantine/core';
 import { useViewportSize } from "@mantine/hooks";
-import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+import { Card, Image, Text, Badge, Button, Group} from '@mantine/core';
 import classes from '../styles/About.module.css'
 import kubraPP from '../assets/kubra.jpg'
 import cathPP from '../assets/catherine.jpeg'
@@ -51,12 +51,11 @@ const About = () => {
       </Card.Section>
 
       <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Catherine Fournier</Text>
-        <Badge color="#f4612d">Web Developper</Badge>
+        <Text fw={600}>Catherine Fournier</Text>
       </Group>
 
       <Text size="sm" c="dimmed">
-      Hey, I'm Catherine, a French native living in Zürich. After a long stint in marketing, I've switched gears to become a web developer. I'm all about cooking and rely on The Fridge app every day for awesome recipe ideas. Join me on this exciting journey of coding and creating delicious recipes!
+      Hey, I'm Catherine, a French native living in Zürich. After a long stint in marketing, I've switched gears to become a web developer.<br/> I'm all about cooking and rely on The Fridge app every day for awesome recipe ideas. Join me on this exciting journey of coding, creating delicious recipes, and exploring new tech horizons!
       </Text>
 
       <a href="https://www.linkedin.com/in/catherine-fournier-7245b563/" target='blank' rel="noopener noreferrer">
@@ -77,10 +76,8 @@ const About = () => {
       </Card.Section>
 
       <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Kübra Tokgözlü</Text>
-        <Badge color="#f4612d">Web Developper</Badge>
+        <Text fw={600}>Kübra Tokgözlü</Text>
       </Group>
-
       <Text size="sm" c="dimmed">
         I'm a Turkish native with a background in mathematics. Transitioning to IT, I've found excitement in problem-solving and coding. Family time is my greatest joy, and come summer, you'll catch me swimming in the Mediterranean. Join me in this journey where family, IT challenges, and seaside adventures intertwine.
       </Text>
@@ -105,8 +102,8 @@ const About = () => {
       </Card.Section>
 
       <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Maxime Comptier</Text>
-        <Badge color="#f4612d">Web Developper</Badge>
+        <Text fw={600}>Maxime Comptier</Text>
+
       </Group>
 
       <Text size="sm" c="dimmed">
