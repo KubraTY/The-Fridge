@@ -85,7 +85,7 @@ const SearchForm = () => {
         </form>
         <div className={styles.filtersContainer}>
           <div className={styles.diets}>
-            Any specific diet?
+            <p>Any specific diet?</p>
             {Object.keys(diets).map((diet) => (
               <label key={diet} className={buttonStyles.checkboxLabel}>
                 <input
@@ -99,15 +99,16 @@ const SearchForm = () => {
           </div>
           <div className={buttonStyles.dishTypeFilter}>
             <label className={styles.dishTypeFilter} >
-              Choose your dish type 
-              <select value={dishTypeFilter} onChange={handleDishType}>
+              Choose your dish type
+            </label>
+            <select value={dishTypeFilter} onChange={handleDishType}>
                 <option value="">All</option>
                 <option value="starter">Starter</option>
                 <option value="soup">Soup</option>
                 <option value="main">Main Course</option>
                 <option value="dessert">Dessert</option>
-              </select>
-            </label>
+            </select>
+            
           </div>
         </div>
         <button className={buttonStyles.button_1} type="submit" onClick={handleSearch}>

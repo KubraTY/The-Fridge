@@ -58,7 +58,8 @@
 
 .filtersContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-start;
     justify-content: space-around;
     width: 100%;
     margin-top: 15px;
@@ -68,6 +69,7 @@
 .diets {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
 .dishTypeFilter{

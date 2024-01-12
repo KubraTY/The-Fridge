@@ -124,6 +124,10 @@
 
 .dishTypeFilter {
   margin-left: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .dishTypeFilter label{
